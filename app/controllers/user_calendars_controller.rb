@@ -1,0 +1,2 @@
+class UserCalendarsController < ApplicationController
+end

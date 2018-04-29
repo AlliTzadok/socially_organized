@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_calendars
   resources :platform_posts
   resources :calendar_posts
   resources :posts
