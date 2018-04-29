@@ -1,0 +1,2 @@
+module CalendarPostsHelper
+end

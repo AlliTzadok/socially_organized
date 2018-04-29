@@ -1,0 +1,2 @@
+class CalendarPost < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class PlatformPost < ApplicationRecord
+end
