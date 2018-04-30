@@ -1,9 +1,10 @@
 class WelcomeController < ApplicationController
 
   def index
-    if user_signed_in?
-      redirect_to dashboard_path
-    else
+    if current_user.nil?
       render :index
+    else
+      redirect_to dashboard_path
     end
   end
+end 
