@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  root 'welcome#index'
-  get '/dashboard', to: 'users#dashboard'
+  unauthenticated do
+    root :to => 'welcome#index'
+  end
+
+  authenticated do
+    root :to => 'users#dashboard'
+  end
 
   resources :posts
   resources :calendars
