@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   resources :posts
-  resources :platforms
+  resources :platforms, only: [:index, :show, :new, :create]
   resources :calendars
 
 
