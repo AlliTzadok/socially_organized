@@ -1,2 +1,0 @@
-class UserCalendarsController < ApplicationController
-end

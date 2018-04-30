@@ -1,2 +1,0 @@
-class CalendarPostsController < ApplicationController
-end
