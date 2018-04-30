@@ -2,10 +2,11 @@ class PlatformsController < ApplicationController
   before_action :set_platform, only: [:show]
 
   def index
-    @platforms = Platform.all
+    @platforms = current_user.platforms
   end
 
   def show
+    @platform = Platform.find(params[:id])
   end
 
   def new
@@ -15,7 +16,7 @@ class PlatformsController < ApplicationController
   def create
     @platform = Platform.new(platform_params)
     if @platform.save
-      redirect_to dashboard_path
+      redirect_to dashboard_path, notice: "Your new social media platform was created."
     else
       redirect_to new_platform_path
     end
@@ -29,5 +30,5 @@ class PlatformsController < ApplicationController
 
   def platform_params
     params.require(:platform).permit(:name)
-  end 
+  end
 end
