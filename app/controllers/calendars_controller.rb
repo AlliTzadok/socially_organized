@@ -1,5 +1,5 @@
 class CalendarsController < ApplicationController
-
+  before_filter :authenticate_user!
   before_action :set_calendar, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -43,5 +43,5 @@ class CalendarsController < ApplicationController
 
   def calendar_params
     params.require(:calendar).permit(:name)
-  end 
+  end
 end

@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
-  resources :user_calendars
-  resources :platform_posts
-  resources :calendar_posts
+  authenticated :user do
+    root 'welcome#home', as 'authenticated_root'
+  end
+
+  devise_scope :user do
+    root 'devise/sessions#new'
+  end
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  get '/auth/facebook/callback' => 'sessions#create'
+
   resources :posts
   resources :platforms
   resources :calendars
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root 'welcome#home'
 end
