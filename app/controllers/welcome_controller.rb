@@ -1,8 +1,8 @@
 class WelcomeController < ApplicationController
 
-  def home
-    if logged_in
-      redirect_to dashboard_path(current_user)
+  def index
+    if user_signed_in?
+      redirect_to dashboard_path
     else
       render :index
     end

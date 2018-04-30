@@ -1,5 +1,6 @@
 class PlatformsController < ApplicationController
   before_action :set_platform, only: [:show]
+  before_action :authenticate_user!
 
   def index
     @platforms = current_user.platforms
