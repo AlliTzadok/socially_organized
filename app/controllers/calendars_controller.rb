@@ -1,10 +1,13 @@
 class CalendarsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_calendar, only: [:show, :edit, :update, :destroy]
+  before_action :set_calendar, only: [:show, :destroy]
 
   def index
     @calendars = Calendar.all
   end
+
+  def show
+    @calendar = Calendar.find(params[:id])
 
   def new
     @calendar = Calendar.new
@@ -15,23 +18,17 @@ class CalendarsController < ApplicationController
 
   def create
     @calendar = Calendar.new(calendar_params)
+    @calendar.user = current_user
     if @calendar.save
       redirect_to calendar_path(@calendar)
     else
+      flash[:error] = @calendar.errors.full_messages
       redirect_to new_calendar_path
     end
   end
 
-  def update
-    if @calendar.update(calendar_params)
-      redirect_to calendar_path(@calendar)
-    else
-      redirect_to edit_calendar_path(@calendar)
-    end
-  end
-
   def destroy
-    @calendar.destroy
+    @calendar = Calendar.find(params[:id])
     redirect_to dashboard_path
   end
 
