@@ -1,15 +1,17 @@
 class CalendarsController < ApplicationController
   before_action :set_calendar, only: [:show, :destroy]
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     @calendars = current_user.calendars
   end
 
   def show
-    @calendar = Calendar.find(params[:id])
+
+  end
 
   def new
+    @user = current_user
     @calendar = current_user.calendars.build
   end
 
@@ -19,13 +21,13 @@ class CalendarsController < ApplicationController
       redirect_to @calendar, notice: 'Calendar was saved.'
     else
       flash[:error] = @calendar.errors.full_messages
-      redirect_to new_calendar_path
+      render :new
     end
   end
 
   def destroy
     @calendar.destroy
-    redirect_to dashboard_path, notice: 'Your calendar has been deleted.'
+    redirect_to root_path, notice: 'Your calendar has been deleted.'
   end
 
   private

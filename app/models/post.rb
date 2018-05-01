@@ -6,5 +6,5 @@ class Post < ApplicationRecord
   belongs_to :user
 
   mount_uploader :picture, PictureUploader
-  validates: :name, presence: true
+  validates :title, presence: true
 end

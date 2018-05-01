@@ -1,0 +1,8 @@
+<h1><%= current_user.name %>'s Calendars</h1>
+
+<h3>Do you want to add a new calendar?</h3>
+<%= link_to "Create a Calendar", new_calendar_path %>
+
+<% @user.calendars.each do |calendar| %>
+  <%= link_to calendar.name, user_calendar_path(@user, calendar) %>
+<% end %>

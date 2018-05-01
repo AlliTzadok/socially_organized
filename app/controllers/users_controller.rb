@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   def dashboard
     @user = current_user
     @calendars = current_user.calendars
-
   end
 
 end

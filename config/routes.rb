@@ -9,15 +9,15 @@ Rails.application.routes.draw do
     root :to => 'users#dashboard'
   end
 
-  resources :posts
   resources :calendars
+  resources :posts
+
+  resources :calendars, only: [:index, :create, :update] do
+    resources :posts
+  end
 
   resources :users do
     resources :calendars
-  end
-
-  resources :calendars do
-    resources :posts
   end
 
 end
