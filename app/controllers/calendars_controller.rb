@@ -8,6 +8,9 @@ class CalendarsController < ApplicationController
   end
 
   def show
+    @users = User.all
+    @user = current_user
+    @calendars = current_user.calendars
 
   end
 

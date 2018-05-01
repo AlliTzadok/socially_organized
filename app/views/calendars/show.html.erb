@@ -6,3 +6,16 @@
 
 <h4>Add a user to this calendar?</h4>
 <%= form_for @calendar do |f| %>
+<%= f.collection_select(:user_ids, User.all, :id, :name) %>
+<%= f.submit "Add", class: "btn-xs btn-info" %>
+<% end %>
+
+<h4>Rough Draft Posts</h4>
+<% @user.calendars.each do |calendar| %>
+  <%= calendar.name %>
+  <% calendar.rough_draft_posts do |post| %>
+    <%= post.title %>
+  <% end %>
+<% end %>
+
+<h4>Finalized Posts</h4>

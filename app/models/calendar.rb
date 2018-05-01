@@ -13,6 +13,13 @@ def todays_calendar
   end
 end
 
+def rough_draft_posts
+  self.posts.each do |post|
+      post.where(finalized: false)
+    end
+  end
+end
+
 #need method to query and verify current user is a user on the calendar
 def authorized_for_calendar
 
