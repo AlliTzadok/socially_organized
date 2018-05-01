@@ -1,1 +1,8 @@
-<%= @calendar.name %>
+<h1><%= @calendar.name.titleize %></h1>
+
+<% if collaborators?(@calendar) %>
+<h3><%= "Collaborators:" %></h3>
+<% end %>
+
+<h4>Add a user to this calendar?</h4>
+<%= form_for @calendar do |f| %>

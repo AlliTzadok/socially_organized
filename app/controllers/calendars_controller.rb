@@ -3,7 +3,8 @@ class CalendarsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @calendars = current_user.calendars
+    @user = current_user
+    @calendars = @user.calendars
   end
 
   def show
@@ -16,7 +17,8 @@ class CalendarsController < ApplicationController
   end
 
   def create
-    @calendar = current_user.calendars.build(calendar_params)
+    @calendar = Calendar.new(calendar_params)
+    @calendar.users << current_user
     if @calendar.save
       redirect_to @calendar, notice: 'Calendar was saved.'
     else
