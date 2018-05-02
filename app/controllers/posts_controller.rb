@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = current_user.posts
+    @users = User.all
   end
 
   def show
@@ -28,7 +29,8 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
+    @post.update(post_params)
+    if @post.save
       redirect_to post_path(@post), notice: 'Your post has been updated.'
     else
       redirect_to edit_post_path(@post)

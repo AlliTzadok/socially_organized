@@ -14,6 +14,10 @@ class Calendar < ApplicationRecord
     end
   end
 
+  def calendar_admin?(user)
+    self.admin_id == user.id
+  end
+
   def rough_draft_posts
     self.posts.select do |post|
       post.finalized == false

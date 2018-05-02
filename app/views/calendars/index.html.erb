@@ -1,12 +1,24 @@
 <h1><%= current_user.name %>'s Calendars</h1>
 
 <div>
-<% @user.calendars.each do |calendar| %>
-  <%= link_to calendar.name.titleize, user_calendar_path(@user, calendar) %>
-<% end %>
+  <table>
+    <tr>
+      <th>Calendar Name</th>
+      <th>Team Members</th>
+    </tr>
+
+    <% current_user.calendars.each do |calendar| %>
+    <tr>
+      <td><%= link_to calendar.name.titleize, user_calendar_path(@user, calendar) %></td>
+      <% calendar.users.each do |user| %>
+      <td><%= user.name %></td>
+    </tr>
+    <% end %>
+    <% end %>
+  </table>
 </div>
 
 <h3>Do you want to add a new calendar?</h3>
 <div>
-<%= link_to "Create a Calendar", new_calendar_path, class: "btn btn-info" %>
+  <%= link_to "Create a Calendar", new_calendar_path, class: "btn btn-info" %>
 </div>

@@ -8,7 +8,7 @@ class CalendarsController < ApplicationController
   end
 
   def show
-    @users = User.all
+    @users = User.all.where.not(id: current_user.id)
     @user = current_user
     @calendars = current_user.calendars
 
@@ -18,14 +18,31 @@ class CalendarsController < ApplicationController
     @calendar = current_user.calendars.build
   end
 
+  def edit
+  end
+
   def create
     @calendar = Calendar.new(calendar_params)
     @calendar.admin = current_user
+    @calendar.users << current_user
     if @calendar.save
       redirect_to @calendar, notice: 'Calendar was saved.'
     else
       flash[:error] = @calendar.errors.full_messages
       render :new
+    end
+  end
+
+  def update
+    if @calendar.calendar_admin?
+      @calendar.update(calendar_params)
+      # need to add line in for adding user to calendar
+
+      if @calendar.save
+        redirect_to calendar_path(@calendar), notice: 'Your calendar has been updated.'
+      else
+        redirect_to calendar_path(@calendar)
+      end
     end
   end
 

@@ -4,10 +4,12 @@
 <h3><%= "Collaborators:" %></h3>
 <% end %>
 
+<% if @calendar.calendar_admin?(@user) %>
 <h4>Add a user to this calendar?</h4>
 <%= form_for @calendar do |f| %>
-<%= f.collection_select(:user_ids, User.all, :id, :name) %>
+<%= f.collection_select(:user_ids, @users, :id, :name) %>
 <%= f.submit "Add", class: "btn-xs btn-info" %>
+<% end %>
 <% end %>
 
 <table>
