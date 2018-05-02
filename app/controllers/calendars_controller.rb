@@ -22,6 +22,7 @@ class CalendarsController < ApplicationController
 
   def create
     @calendar = Calendar.new(calendar_params)
+    @calendar.admin = current_user
     if @calendar.save
       redirect_to @calendar, notice: 'Calendar was saved.'
     else
@@ -41,11 +42,7 @@ class CalendarsController < ApplicationController
     @calendar = Calendar.find(params[:id])
   end
 
-  def set_admin
-    @calendar.admin.id = current_user.id
-  end 
-
   def calendar_params
-    params.require(:calendar).permit(:name, :user_id)
+    params.require(:calendar).permit(:name)
   end
 end
