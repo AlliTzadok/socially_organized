@@ -4,7 +4,7 @@ class Calendar < ApplicationRecord
   has_many :users, :through => :user_calendars
   has_many :calendar_posts
   has_many :posts, :through => :calendar_posts
-  belongs_to :admin, :class_name => :User, :foreign_key => "user_id"
+  belongs_to :admin, :class_name => :User
 
   #need method to find all calendar posts for today.
   #does it need to be calendar.posts.where(date: Date.current)? or some other way

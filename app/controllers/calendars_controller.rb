@@ -1,5 +1,6 @@
 class CalendarsController < ApplicationController
   before_action :set_calendar, only: [:show, :destroy]
+  before_action :set_admin, only: :create
   before_action :authenticate_user!
 
   def index
@@ -21,7 +22,6 @@ class CalendarsController < ApplicationController
 
   def create
     @calendar = Calendar.new(calendar_params)
-    @calendar.users << current_user
     if @calendar.save
       redirect_to @calendar, notice: 'Calendar was saved.'
     else
@@ -41,7 +41,11 @@ class CalendarsController < ApplicationController
     @calendar = Calendar.find(params[:id])
   end
 
+  def set_admin
+    @calendar.admin.id = current_user.id
+  end 
+
   def calendar_params
-    params.require(:calendar).permit(:name)
+    params.require(:calendar).permit(:name, :user_id)
   end
 end

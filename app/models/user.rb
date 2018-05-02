@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :calendars, through: :user_calendars
   has_many :posts
 
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -28,7 +29,4 @@ class User < ApplicationRecord
     name.split.last
   end
 
-  def add_calendar
-    Calendar.new(admin: self)
-  end 
 end

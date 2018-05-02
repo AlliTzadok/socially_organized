@@ -1,6 +1,6 @@
 <h1>Create a New Calendar</h1>
 
-<%= form_for @calendar do |f| %>
+<%= form_for ([@user, @calendar]) do |f| %>
 <%= f.label :name, 'Calendar Name' %> <br>
 <%= f.text_field :name %>
 <%= f.submit %>
