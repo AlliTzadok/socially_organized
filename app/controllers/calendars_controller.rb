@@ -1,6 +1,5 @@
 class CalendarsController < ApplicationController
   before_action :set_calendar, only: [:show, :destroy]
-  before_action :set_admin, only: :create
   before_action :authenticate_user!
 
   def index
@@ -16,7 +15,6 @@ class CalendarsController < ApplicationController
   end
 
   def new
-    @user = current_user
     @calendar = current_user.calendars.build
   end
 
