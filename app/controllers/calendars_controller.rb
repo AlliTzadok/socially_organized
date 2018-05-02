@@ -1,5 +1,5 @@
 class CalendarsController < ApplicationController
-  before_action :set_calendar, only: [:show, :destroy]
+  before_action :set_calendar, only: [:edit, :show, :update, :destroy]
   before_action :authenticate_user!
 
   def index
@@ -34,7 +34,8 @@ class CalendarsController < ApplicationController
   end
 
   def update
-    if @calendar.calendar_admin?
+    @user = current_user
+    if @calendar.calendar_admin?(@user)
       @calendar.update(calendar_params)
       # need to add line in for adding user to calendar
 

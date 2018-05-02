@@ -1,17 +1,32 @@
 <h1><%= @calendar.name.titleize %></h1>
 
-<% if collaborators?(@calendar) %>
-<h3><%= "Collaborators:" %></h3>
+<% if @calendar.collaborators? %>
+<h3><%= "Collaborators" %></h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+  </tr>
+
+  <tr>
+    <% @calendar.users.each do |user| %>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+  </tr>
+
+</table>
+<% end %>
 <% end %>
 
 <% if @calendar.calendar_admin?(@user) %>
-<h4>Add a user to this calendar?</h4>
+<h3>Add a user to this calendar?</h3>
 <%= form_for @calendar do |f| %>
 <%= f.collection_select(:user_ids, @users, :id, :name) %>
 <%= f.submit "Add", class: "btn-xs btn-info" %>
 <% end %>
 <% end %>
 
+<h3>Calendar Posts</h3>
 <table>
   <tr>
     <th>Rough Drafts</th>

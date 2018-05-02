@@ -28,7 +28,3 @@
    border-bottom: 1px solid #DDD;
    border-spacing: 10px;
  }
-
- td:last-child {
-   border-bottom: 1px solid #DDD;
- }

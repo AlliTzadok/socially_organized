@@ -14,6 +14,10 @@ class Calendar < ApplicationRecord
     end
   end
 
+  def collaborators?
+    self.users.count > 0
+  end
+
   def calendar_admin?(user)
     self.admin_id == user.id
   end
