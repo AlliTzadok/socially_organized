@@ -1,21 +1,19 @@
 <h1><%= current_user.name %>'s Calendars</h1>
 
 <div>
-  <table>
-    <tr>
-      <th>Calendar Name</th>
-      <th>Team Members</th>
-    </tr>
 
+  <h3>Calendar Name</h3>
     <% current_user.calendars.each do |calendar| %>
-    <tr>
-      <td><%= link_to calendar.name.titleize, user_calendar_path(@user, calendar) %></td>
+    <%= link_to calendar.name.titleize, user_calendar_path(@user, calendar) %>
+
+      <h3>Team Members</h3>
       <% calendar.users.each do |user| %>
-      <td><%= user.name %></td>
-    </tr>
+    <%= user.name %> <br>
+
+      <% end %>
+
     <% end %>
-    <% end %>
-  </table>
+
 </div>
 
 <h3>Do you want to add a new calendar?</h3>

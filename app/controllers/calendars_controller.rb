@@ -36,7 +36,7 @@ class CalendarsController < ApplicationController
   def update
     @user = current_user
     if @calendar.calendar_admin?(@user)
-      @calendar.update(calendar_params)
+      @calendar.users << User.find(params[:calendar][:user_ids])
       # need to add line in for adding user to calendar
 
       if @calendar.save

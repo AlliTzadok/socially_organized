@@ -1,5 +1,14 @@
 <h1><%= @calendar.name.titleize %></h1>
 
+
+<% if @calendar.calendar_admin?(@user) %>
+<h3>Add a user to this calendar?</h3>
+<%= form_for @calendar do |f| %>
+<%= f.collection_select(:user_ids, @users, :id, :name) %>
+<%= f.submit "Update Calendar", class: "btn-xs btn-info" %>
+<% end %>
+<% end %>
+
 <% if @calendar.collaborators? %>
 <h3><%= "Collaborators" %></h3>
 <table>
@@ -8,22 +17,15 @@
     <th>Email</th>
   </tr>
 
+
+  <% @calendar.users.each do |user| %>
   <tr>
-    <% @calendar.users.each do |user| %>
     <td><%= user.name %></td>
     <td><%= user.email %></td>
   </tr>
-
+  <% end %>
 </table>
-<% end %>
-<% end %>
 
-<% if @calendar.calendar_admin?(@user) %>
-<h3>Add a user to this calendar?</h3>
-<%= form_for @calendar do |f| %>
-<%= f.collection_select(:user_ids, @users, :id, :name) %>
-<%= f.submit "Add", class: "btn-xs btn-info" %>
-<% end %>
 <% end %>
 
 <h3>Calendar Posts</h3>
@@ -33,13 +35,13 @@
     <th>Finalized Posts </th>
   </tr>
 
-<tr>
-  <% @calendar.rough_draft_posts.each do |post| %>
+  <tr>
+    <% @calendar.rough_draft_posts.each do |post| %>
     <td><%= link_to post.title, post_path %></td>
-  <% end %>
-  <% @calendar.finalized_posts.each do |post| %>
-  <td><%= link_to post.title, post_path %></td>
-  <% end %>
-</tr>
+    <% end %>
+    <% @calendar.finalized_posts.each do |post| %>
+    <td><%= link_to post.title, post_path %></td>
+    <% end %>
+  </tr>
 
 </table>

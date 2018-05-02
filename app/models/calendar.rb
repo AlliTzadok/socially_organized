@@ -6,6 +6,8 @@ class Calendar < ApplicationRecord
   has_many :posts, :through => :calendar_posts
   belongs_to :admin, :class_name => :User, :foreign_key => :admin_id
 
+  validates_presence_of :name
+
   #need method to find all calendar posts for today.
   #does it need to be calendar.posts.where(date: Date.current)? or some other way
   def todays_calendar
@@ -15,7 +17,7 @@ class Calendar < ApplicationRecord
   end
 
   def collaborators?
-    self.users.count > 0
+    self.users.count > 1
   end
 
   def calendar_admin?(user)
