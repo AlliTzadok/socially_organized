@@ -27,4 +27,8 @@ class User < ApplicationRecord
   def last_name
     name.split.last
   end
+
+  def add_calendar
+    Calendar.new(admin: self)
+  end 
 end
