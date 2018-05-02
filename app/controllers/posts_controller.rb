@@ -11,6 +11,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @posts = current_user.posts.select {|p| p.persisted?}
     @post = current_user.posts.build
   end
 

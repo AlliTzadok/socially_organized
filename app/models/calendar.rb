@@ -14,8 +14,8 @@ class Calendar < ApplicationRecord
   end
 
   def rough_draft_posts
-    self.posts.each do |post|
-      post.where(finalized: false)
+    self.posts.select do |post|
+      post.finalized == false
     end
   end
 

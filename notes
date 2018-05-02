@@ -1,3 +1,15 @@
 
 Add below code to Calendar#Show view
 <%= image_tag post.picture_url, width: '100%' if post.picture.present? %>
+
+Add code o Post#new
+<!-- Picture upload field should be:
+f.field_field :picture, id: :post_picture -->
+
+Need a method in user model that admin can add user to calendar.. something like:
+current_user.add_user_to_calendar(employee, calendar)
+
+need a method in user model to add the user who creates a calendar as the admin. something like:
+def add_calendar
+Calendar.new(admin: self)
+end 
