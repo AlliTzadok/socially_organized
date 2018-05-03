@@ -22,11 +22,11 @@
 <th>Picture:</th>
   <td><%= image_tag(@post.picture_url, width: 200) if @post.picture.present? %></td>
 </tr>
-<tr>
-  <th>Platforms:</th>
-  <td><% @post.platforms.each do |platform| %></td>
-</tr>
 
+  <th>Platforms:</th>
+<% @post.platforms.each do |platform| %>
+<tr><%= platform.name %></tr>
+<% end %>
 </table>
 </div>
 
@@ -43,5 +43,5 @@
   <%= f.date_select :time %>
   <% end %>
 
-<% end %>
+
 </div>
