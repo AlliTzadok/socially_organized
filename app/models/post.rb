@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   has_many :platforms, through: :platform_posts
   belongs_to :user
 
+
   mount_uploader :picture, PictureUploader
   validates :title, presence: true
 

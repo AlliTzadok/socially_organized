@@ -44,6 +44,7 @@ class PostsController < ApplicationController
 
   def schedule_post
     @calendar_post = CalendarPost.new(calendar_post_params)
+    binding.pry
     if @calendar_post.save
       binding.pry
       redirect_to post_path(@post)

@@ -9,8 +9,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
-  validates :name, presence: true
-  validates_uniqueness_of :email
+  validates :email, uniqueness: true
+  validates :email, confirmation: {case_sensitive: false}
+  validates :password, confirmation: {case_sensitive: true}
+  validates :password, length: { minimum: 2}
+  validates :email, :password, :name, presence: true
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

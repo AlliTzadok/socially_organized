@@ -31,5 +31,7 @@
   <%= f.label :date, "Date:"%>
   <%= f.date_select :date %> <br>
   <%= f.label :time, "Time:"%>
-  <%= f.time_select :time %>
+  <%= f.time_select :time %>  <br>
+  <%= f.hidden_field :post_id %>
+  <%= f.submit "Schedule Post", class: "btn btn-sm btn-info"%>
   <% end %>
