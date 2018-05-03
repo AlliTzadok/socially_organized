@@ -1,3 +1,4 @@
+<div>
 <table>
   <tr>
 <th>Title:</th>
@@ -23,10 +24,24 @@
 </tr>
 <tr>
   <th>Platforms:</th>
-  <td><%=@post.platforms %></td>
+  <td><% @post.platforms.each do |platform| %></td>
 </tr>
 
 </table>
+</div>
 
 
 <h3><%= link_to "Edit Post", edit_post_path(@post) %></h3>
+
+<div class="form-group row">
+  <%= form_for @calendar_posts, url: { action: "schedule_post"} do |f| %>
+  <%= f.label :calendar, "Your Calendars", class: "col-sm-2 col-form-label"%>
+  <%= f.collection_select :calendar_ids, @calendars, :id, :name %> <br> <br>
+  <%= f.label :date, class: "col-sm-2 col-form-label" %>
+  <%= f.date_select :date %>
+  <%= f.label :time, class: "col-sm-2 col-form-label"%>
+  <%= f.date_select :time %>
+  <% end %>
+
+<% end %>
+</div>

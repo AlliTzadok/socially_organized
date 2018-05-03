@@ -40,9 +40,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def schedule
+  def schedule_post
 
-  end 
+  end
 
   def destroy
     @post.destroy
