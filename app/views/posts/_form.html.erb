@@ -1,0 +1,37 @@
+<div class="container">
+  <%= form_for @post do |f| %>
+
+  <div class="form-group row">
+    <%= f.label :title, class: "col-sm-2 col-form-label"%>
+    <div class="col-sm-10">
+      <%= f.text_field :title, required: true %> </div>
+      <small class="form-text text-muted col-sm-10">Title is required.</small>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :content, class: "col-sm-2 col-form-label"%>
+      <div class="col-sm-10">
+        <%= f.text_area :content, cols: "23", rows: "3"%>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :link, class: "col-sm-2 col-form-label"%>
+      <div class="col-sm-10">
+        <%= f.text_field :link %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :picture, class: "col-sm-2 col-form-label" %>
+      <%= f.file_field :picture, id: :post_picture, class: "col-sm-10"%>
+    </div>
+    <%= f.hidden_field :user_id %> <br>
+
+    <div class="form-group row">
+      <%= f.label :platform, "Social Platforms", class: "col-sm-2 col-form-label"%>
+      <%= f.collection_check_boxes :platform_ids, Platform.all, :id, :name %>
+    </div>
+    <div class="form-group row">
+      <%= f.submit class: "btn btn-sm btn-info"%>
+    </div>
+    <% end %>
+</div>

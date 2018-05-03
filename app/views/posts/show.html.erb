@@ -1,3 +1,6 @@
 <%= @post.title %>
 <%= @post.content %>
 <%= image_tag(@post.picture_url, width: 600) if @post.picture.present? %>
+
+<%= render 'form' %>
+<%= form_for [current_user, @post] do |f| %>
