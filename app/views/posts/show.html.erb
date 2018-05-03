@@ -1,6 +1,32 @@
-<%= @post.title %>
-<%= @post.content %>
-<%= image_tag(@post.picture_url, width: 600) if @post.picture.present? %>
+<table>
+  <tr>
+<th>Title:</th>
+<td><%= @post.title %></td>
+</tr>
 
-<%= render 'form' %>
-<%= form_for [current_user, @post] do |f| %>
+<tr>
+<th>Content:</th>
+  <td><%= @post.content %></td>
+</tr>
+
+<tr>
+<th>Link:</th>
+  <td><%= @post.link %></td>
+</tr>
+<tr>
+<th>Finalized:</th>
+  <td><%= @post.finalized %></td>
+</tr>
+<tr></tr>
+<th>Picture:</th>
+  <td><%= image_tag(@post.picture_url, width: 200) if @post.picture.present? %></td>
+</tr>
+<tr>
+  <th>Platforms:</th>
+  <td><%=@post.platforms %></td>
+</tr>
+
+</table>
+
+
+<h3><%= link_to "Edit Post", edit_post_path(@post) %></h3>

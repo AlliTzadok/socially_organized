@@ -2,15 +2,8 @@
 
 <div>
 
-  <h3>Calendar Name</h3>
     <% current_user.calendars.each do |calendar| %>
-    <%= link_to calendar.name.titleize, user_calendar_path(@user, calendar) %>
-
-      <h3>Team Members</h3>
-      <% calendar.users.each do |user| %>
-    <%= user.name %> <br>
-
-      <% end %>
+  <h4>  <%= link_to calendar.name.titleize, user_calendar_path(@user, calendar) %> </h4>
 
     <% end %>
 

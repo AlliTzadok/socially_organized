@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+
   before_action :authenticate_user!
 
   def index
@@ -8,8 +9,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-    @calendars = Post.calendars.build
+    @calendars = current_user.calendars
+    @calendar_posts = CalendarPost.find_or_initialize_by(post: @post)
   end
 
   def new
@@ -18,6 +19,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @calendars = current_user.calendars
   end
 
   def create
@@ -38,6 +40,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def schedule
+
+  end 
+
   def destroy
     @post.destroy
     redirect_to posts_path, notice: 'Your post has been deleted.'
@@ -48,7 +54,11 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def set_calendars
+    @calendars = current_user.calendars
+  end
+
   def post_params
-    params.require(:post).permit(:title, :content, :link, :finalized, :picture, :user_id)
+    params.require(:post).permit(:title, :content, :link, :finalized, :picture, :user_id, :platform_attributes => [:name], :calendar_attributes => [:name])
   end
 end

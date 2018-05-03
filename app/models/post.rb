@@ -8,5 +8,11 @@ class Post < ApplicationRecord
   mount_uploader :picture, PictureUploader
   validates :title, presence: true
 
+  def platform_attributes=(platform_attributes)
+   platform_attributes.values.each do |platform_attribute|
+      platform = Platform.find_or_create_by(platform_attribute)
+      self.platforms << platform
+    end
+  end
 
 end
