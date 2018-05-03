@@ -1,47 +1,35 @@
-<div>
-<table>
-  <tr>
-<th>Title:</th>
-<td><%= @post.title %></td>
-</tr>
 
-<tr>
-<th>Content:</th>
-  <td><%= @post.content %></td>
-</tr>
+<h3></h3>Title:</h3>
+<%= @post.title %>  <br> <br>
 
-<tr>
-<th>Link:</th>
-  <td><%= @post.link %></td>
-</tr>
-<tr>
-<th>Finalized:</th>
-  <td><%= @post.finalized %></td>
-</tr>
-<tr></tr>
-<th>Picture:</th>
-  <td><%= image_tag(@post.picture_url, width: 200) if @post.picture.present? %></td>
-</tr>
+<h3>Content:</h3>
+<%= @post.content %> <br> <br>
 
-  <th>Platforms:</th>
+<h3>Link:</h3>
+<%= @post.link %>  <br> <br>
+<h3>Finalized:</h3>
+<%= human_boolean(@post.finalized) %>  <br> <br>
+
+<h3>Picture:</h3>
+<%= image_tag(@post.picture_url, width: 200) if @post.picture.present? %>  <br> <br>
+
+<h3>Platforms:</h3>
 <% @post.platforms.each do |platform| %>
-<tr><%= platform.name %></tr>
+<%= platform.name %>
 <% end %>
-</table>
-</div>
+
+<br> <br>
+
+<%= link_to "Edit Post", edit_post_path(@post) %>
+
+<br> <br>
 
 
-<h3><%= link_to "Edit Post", edit_post_path(@post) %></h3>
-
-<div class="form-group row">
   <%= form_for @calendar_posts, url: { action: "schedule_post"} do |f| %>
-  <%= f.label :calendar, "Your Calendars", class: "col-sm-2 col-form-label"%>
-  <%= f.collection_select :calendar_ids, @calendars, :id, :name %> <br> <br>
-  <%= f.label :date, class: "col-sm-2 col-form-label" %>
-  <%= f.date_select :date %>
-  <%= f.label :time, class: "col-sm-2 col-form-label"%>
-  <%= f.date_select :time %>
+  <%= f.label :calendar, "Your Calendars:"%>
+  <%= f.collection_select :calendar_id, @calendars, :id, :name %> <br> <br>
+  <%= f.label :date, "Date:"%>
+  <%= f.date_select :date %> <br>
+  <%= f.label :time, "Time:"%>
+  <%= f.time_select :time %>
   <% end %>
-
-
-</div>

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :schedule_post, :destroy]
 
   before_action :authenticate_user!
 
@@ -16,10 +16,12 @@ class PostsController < ApplicationController
   def new
     @posts = current_user.posts.select {|p| p.persisted?}
     @post = current_user.posts.build
+    @platforms = Platform.all
   end
 
   def edit
     @calendars = current_user.calendars
+    @platforms = Platform.all
   end
 
   def create
@@ -41,7 +43,13 @@ class PostsController < ApplicationController
   end
 
   def schedule_post
-
+    @calendar_post = CalendarPost.new(calendar_post_params)
+    if @calendar_post.save
+      binding.pry
+      redirect_to post_path(@post)
+    else
+      render 'show'
+    end
   end
 
   def destroy
@@ -59,6 +67,10 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :link, :finalized, :picture, :user_id, :platform_attributes => [:name], :calendar_attributes => [:name])
+    params.require(:post).permit(:title, :content, :link, :finalized, :picture, :user_id, :platform_attributes => [:name])
+  end
+
+  def calendar_post_params
+    params.require(:calendar_posts).permit(:post_id, :calendar_id, :date, :time)
   end
 end

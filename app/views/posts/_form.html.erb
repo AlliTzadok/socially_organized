@@ -1,42 +1,44 @@
 <div class="container">
-  <%= form_for @post do |f| %>
+  <div class="form-field">
+    <%= form_for @post do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title, required: true %>
+    Title is required.
+  </div>
 
-  <div class="form-group row">
-    <%= f.label :title, class: "col-sm-2 col-form-label"%>
-    <div class="col-sm-10">
-      <%= f.text_field :title, required: true %> </div>
-      <small class="form-text text-muted col-sm-10">Title is required.</small>
-    </div>
+  <div class="form-field">
+    <%= f.label :content%>
+    <%= f.text_area :content%>
+  </div>
 
-    <div class="form-group row">
-      <%= f.label :content, class: "col-sm-2 col-form-label"%>
-      <div class="col-sm-10">
-        <%= f.text_area :content, cols: "23", rows: "3"%>
-      </div>
-    </div>
-    <div class="form-group row">
-      <%= f.label :link, class: "col-sm-2 col-form-label"%>
-      <div class="col-sm-10">
-        <%= f.text_field :link %>
-      </div>
-    </div>
-    <div class="form-group row">
-      <%= f.label :picture, class: "col-sm-2 col-form-label" %>
-      <%= f.file_field :picture, id: :post_picture, class: "col-sm-10"%>
-    </div>
-    <%= f.hidden_field :user_id %> <br>
+  <div class="form-field">
+    <%= f.label :link %>
+    <%= f.text_field :link %>
+  </div>
 
-    <div class="form-group row">
-      <%= f.label :platform, "Social Platforms", class: "col-sm-2 col-form-label"%>
-      <%= f.collection_check_boxes :platform_ids, Platform.all, :id, :name %> <br> <br>
-      <%= f.label :platform, 'New Platform', class: "col-sm-2 col-form-label"%>
-      <%= f.fields_for :platforms, @post.platforms.build do |platform_fields| %>
-      <%= platform_fields.text_field :name, class: "col-sm-10" %> <br> <br>
-      <% end %>
-    </div>
+  <div class="file-field">
+    <%= f.label :picture%>
+    <%= f.file_field :picture, id: :post_picture%>
+  </div>
 
-    <div class="form-group row">
-      <%= f.submit class: "btn btn-sm btn-info"%>
-    </div>
-<% end %>
+  <%= f.hidden_field :user_id %> <br>
+
+  <div class="form-field">
+    <%= f.fields_for :platform_attributes do |platform| %>
+    <%= platform.label :platform, "Social Platforms"%>
+    <%= platform.collection_check_boxes :platform_ids, Platform.all, :id, :name %> <br> <br>
+  </div>
+  <div>
+    <h4> Or Create a new platform: </h4>
+    <%= platform.label :platform, 'New Platform'%>
+    <%= f.fields_for :platform_attributes, @post.platforms.build do |platform| %>
+    <%= platform.text_field :name%> <br> <br>
+    <% end %>
+  </div>
+  <% end %>
+
+
+  <%= f.submit class: "btn btn-sm btn-info"%>
+
+  <% end %>
 </div>
