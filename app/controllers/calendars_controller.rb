@@ -24,8 +24,9 @@ class CalendarsController < ApplicationController
   def create
     @calendar = Calendar.new(calendar_params)
     @calendar.admin = current_user
-    @calendar.users << current_user
     if @calendar.save
+      @calendar.users << current_user
+      @calendar.save 
       redirect_to @calendar, notice: 'Calendar was saved.'
     else
       flash[:error] = @calendar.errors.full_messages
