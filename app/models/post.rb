@@ -10,10 +10,16 @@ class Post < ApplicationRecord
   validates :title, presence: true
 
   def platform_attributes=(platform_attributes)
-   platform_attributes.values.each do |platform_attribute|
-      platform = Platform.find_or_create_by(platform_attribute)
-      self.platforms << platform
+    if platform_attributes['platform_ids']
+      platform_attributes.platform_ids.each do |id|
+        platform = Platform.find(id: id)
+        self.platforms << platform
+      end
     end
+    if platform_attributes['name'] != ""
+      platform = Platform.find_or_create_by(name: platform_attributes['name'])
+      self.platforms << platform
+    end   
   end
 
 end
