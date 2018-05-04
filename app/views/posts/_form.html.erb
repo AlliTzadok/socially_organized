@@ -23,7 +23,7 @@
 
   <div class="file-field">
     <%= f.label :finalized %>
-    <%= f.radio_button :finalized , true%>
+    <%= f.radio_button :finalized, true%>
     <%= f.label :finalized, "Yes" %>
     <%= f.radio_button :finalized, false %>
     <%= f.label :finalized, "No" %>
@@ -34,7 +34,7 @@
   <div class="form-field">
     <%= f.fields_for :platform_attributes do |platform| %>
     <%= platform.label :platform, "Social Platforms"%>
-    <%= platform.collection_check_boxes :platform_ids, Platform.all, :id, :name %> <br> <br>
+    <%= platform.collection_check_boxes :platform_ids, Platform.all, :id, :name, :multiple => true %> <br> <br>
   </div>
   <div>
     <h4> Or Create a new platform: </h4>
