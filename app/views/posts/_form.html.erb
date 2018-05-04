@@ -31,9 +31,7 @@
   <div>
     <h4> Or Create a new platform: </h4>
     <%= platform.label :platform, 'New Platform'%>
-    <%= f.fields_for :platform_attributes, @post.platforms.build do |platform| %>
     <%= platform.text_field :name%> <br> <br>
-    <% end %>
   </div>
   <% end %>
 
