@@ -1,9 +1,14 @@
+<div class="container">
+<%= link_to "Finalized", finalized_posts_path, class: 'btn btn-info'%>
+<%= link_to "Drafted", drafted_posts_path, class: 'btn btn-info' %>
+</div>
+
 <h1><%= current_user.name %>'s Posts </h1>
 
 
-<table>
-
+<div class="container">
   <% @posts.each do |post| %>
     <li><%= link_to post.title, post_path(post) %> </li>
     <% end %>
-</table>
+
+</div>

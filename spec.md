@@ -12,7 +12,7 @@ Specs:
 - [x] Include login - Used Devise
 - [x] Include logout - Used Devise
 - [x] Include third party signup/login - Used Devise/Omniauth for FB
-- [ ] Include nested resource show or index (URL e.g. users/2/recipes)
+- [x] Include nested resource show or index (URL e.g. users/2/recipes)
 - [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
 - [ ] Include form display of validation errors (form URL e.g. /recipes/new)
 

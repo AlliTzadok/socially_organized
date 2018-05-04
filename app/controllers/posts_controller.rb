@@ -26,6 +26,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    binding.pry
     if @post.save
       redirect_to post_path(@post)
     else
@@ -43,7 +44,7 @@ class PostsController < ApplicationController
   end
 
   def schedule_post
-    @calendar_post = CalendarPost.new(calendar_post_params)
+    @calendar_post = CalendarPost.find_or_create_by(calendar_post_params)
     if @calendar_post.save
       redirect_to post_path(@post)
     else
