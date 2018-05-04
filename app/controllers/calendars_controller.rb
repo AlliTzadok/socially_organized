@@ -4,14 +4,13 @@ class CalendarsController < ApplicationController
 
   def index
     @user = current_user
-    @calendars = @user.calendars
+    @calendars = current_user.calendars
   end
 
   def show
     @users = User.all.where.not(id: current_user.id)
     @user = current_user
     @calendars = current_user.calendars
-
   end
 
   def new
@@ -38,8 +37,6 @@ class CalendarsController < ApplicationController
     @user = current_user
     if @calendar.calendar_admin?(@user)
       @calendar.users << User.find(params[:calendar][:user_ids])
-      # need to add line in for adding user to calendar
-
       if @calendar.save
         redirect_to calendar_path(@calendar), notice: 'Your calendar has been updated.'
       else

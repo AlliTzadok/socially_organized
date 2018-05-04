@@ -36,11 +36,11 @@
   </tr>
 
   <tr>
-    <% @calendar.posts.draft do |post| %>
-    <td><%= link_to post.title, post_path %></td>
+    <% @calendar.posts.drafted do |post| %>
+    <td><%= link_to post.title, post_path(post) %></td>
     <% end %>
     <% @calendar.posts.finalized do |post| %>
-    <td><%= link_to post.title, post_path %></td>
+    <td><%= link_to post.title, post_path(post) %></td>
     <% end %>
   </tr>
 

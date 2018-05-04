@@ -9,6 +9,12 @@ Rails.application.routes.draw do
     root :to => 'users#dashboard'
   end
 
+  get 'posts/finalized', to: 'posts#finalized', as: 'finalized_posts'
+  get 'posts/drafted', to: 'posts#drafted', as: 'drafted_posts'
+
+  post 'posts/:id/schedule_post', to: 'posts#schedule_post', as: 'schedule_post'
+
+
   resources :calendars
   resources :posts
 
@@ -16,9 +22,8 @@ Rails.application.routes.draw do
     resources :posts
   end
 
-  post 'posts/:id/schedule_post', to: 'posts#schedule_post', as: 'schedule_post'
-  get 'posts/finalized', to: 'posts#finalized', as: 'finalized_posts'
-  get 'posts/drafted', to: 'posts#drafted', as: 'drafted_posts'
+
+
 
   resources :users do
     resources :calendars

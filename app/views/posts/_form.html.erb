@@ -30,16 +30,17 @@
   </div>
 
   <%= f.hidden_field :user_id %> <br>
+  <div class="file-field">
+    <%= f.label :platform, "Social Platforms"%>
+    <%= f.collection_check_boxes :platform_ids, Platform.all, :id, :name, :multiple => true %> <br> <br>
+  </div>
 
   <div class="form-field">
-    <%= f.fields_for :platform_attributes do |platform| %>
-    <%= platform.label :platform, "Social Platforms"%>
-    <%= platform.collection_check_boxes :platform_ids, Platform.all, :id, :name, :multiple => true %> <br> <br>
-  </div>
-  <div>
+    <%= f.fields_for :platform_posts, @platform_post do |platform_post| %>
+
     <h4> Or Create a new platform: </h4>
-    <%= platform.label :platform, 'New Platform'%>
-    <%= platform.text_field :name%> <br> <br>
+    <%= platform_post.label :platform, 'New Platform'%>
+    <%= platform_post.text_field :name%> <br> <br>
   </div>
   <% end %>
 

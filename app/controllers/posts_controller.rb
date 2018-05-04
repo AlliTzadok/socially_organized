@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :schedule_post, :destroy]
-
+  before_action :set_calendars, only: [:finalized, :drafted]
   before_action :authenticate_user!
 
   def index
@@ -13,10 +13,18 @@ class PostsController < ApplicationController
     @calendar_posts = CalendarPost.find_or_initialize_by(post: @post)
   end
 
+  def finalized
+
+  end
+
+  def drafted
+
+  end
+
   def new
-    @posts = current_user.posts.select {|p| p.persisted?}
     @post = current_user.posts.build
     @platforms = Platform.all
+    @platform_post = @post.platform_posts.build
   end
 
   def edit
@@ -58,6 +66,7 @@ class PostsController < ApplicationController
 
   private
   def set_post
+
     @post = Post.find(params[:id])
   end
 
@@ -66,7 +75,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :link, :finalized, :picture, :user_id, :platform_attributes => [:platform_ids, :name])
+    params.require(:post).permit(:title, :content, :link, :finalized, :picture, :user_id, :platform_ids => [], :platform_attributes => [:name])
   end
 
   def calendar_post_params
