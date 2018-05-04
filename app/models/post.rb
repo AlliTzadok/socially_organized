@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   has_many :platform_posts
   has_many :platforms, through: :platform_posts
   belongs_to :user
+  scope :finalized, -> { where(finalized: true)}
+  scope :draft, -> {where(finalized: false)}
 
 
   mount_uploader :picture, PictureUploader
@@ -19,7 +21,7 @@ class Post < ApplicationRecord
     if platform_attributes['name'] != ""
       platform = Platform.find_or_create_by(name: platform_attributes['name'])
       self.platforms << platform
-    end   
+    end
   end
 
 end

@@ -1,6 +1,22 @@
 
-<h3></h3>Title:</h3>
-<%= @post.title %>  <br> <br>
+<div class="container">
+  <h3><%= link_to "Edit Post", edit_post_path(@post) %></h3>
+  <br>
+<%= form_for @calendar_posts, url: { action: "schedule_post"} do |f| %>
+<%= f.label :calendar, "Your Calendars:"%>
+<%= f.collection_select :calendar_id, @calendars, :id, :name %> <br> <br>
+<%= f.label :date, "Date:"%>
+<%= f.date_select :date %> <br>
+<%= f.label :time, "Time:"%>
+<%= f.time_select :time %>  <br>
+<%= f.hidden_field :post_id %>
+<%= f.submit "Schedule Post", class: "btn btn-sm btn-info"%>
+<% end %>
+</div>
+
+<div class="container">
+<h1>Title:  <%= @post.title %> </h1>
+
 
 <h3>Content:</h3>
 <%= @post.content %> <br> <br>
@@ -17,21 +33,4 @@
 <% @post.platforms.each do |platform| %>
 <%= platform.name %>
 <% end %>
-
-<br> <br>
-
-<%= link_to "Edit Post", edit_post_path(@post) %>
-
-<br> <br>
-
-
-  <%= form_for @calendar_posts, url: { action: "schedule_post"} do |f| %>
-  <%= f.label :calendar, "Your Calendars:"%>
-  <%= f.collection_select :calendar_id, @calendars, :id, :name %> <br> <br>
-  <%= f.label :date, "Date:"%>
-  <%= f.date_select :date %> <br>
-  <%= f.label :time, "Time:"%>
-  <%= f.time_select :time %>  <br>
-  <%= f.hidden_field :post_id %>
-  <%= f.submit "Schedule Post", class: "btn btn-sm btn-info"%>
-  <% end %>
+</div>

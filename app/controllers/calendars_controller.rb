@@ -26,7 +26,7 @@ class CalendarsController < ApplicationController
     @calendar.admin = current_user
     if @calendar.save
       @calendar.users << current_user
-      @calendar.save 
+      @calendar.save
       redirect_to @calendar, notice: 'Calendar was saved.'
     else
       flash[:error] = @calendar.errors.full_messages

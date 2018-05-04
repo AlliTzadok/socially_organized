@@ -21,6 +21,14 @@
     <%= f.file_field :picture, id: :post_picture%>
   </div>
 
+  <div class="file-field">
+    <%= f.label :finalized %>
+    <%= f.radio_button :finalized , true%>
+    <%= f.label :finalized, "Yes" %>
+    <%= f.radio_button :finalized, false %>
+    <%= f.label :finalized, "No" %>
+  </div>
+
   <%= f.hidden_field :user_id %> <br>
 
   <div class="form-field">

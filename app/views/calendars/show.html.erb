@@ -36,10 +36,10 @@
   </tr>
 
   <tr>
-    <% @calendar.rough_draft_posts.each do |post| %>
+    <% @calendar.posts.draft do |post| %>
     <td><%= link_to post.title, post_path %></td>
     <% end %>
-    <% @calendar.finalized_posts.each do |post| %>
+    <% @calendar.posts.finalized do |post| %>
     <td><%= link_to post.title, post_path %></td>
     <% end %>
   </tr>
