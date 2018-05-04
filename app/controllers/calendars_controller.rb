@@ -26,7 +26,7 @@ class CalendarsController < ApplicationController
     if @calendar.save
       @calendar.users << current_user
       @calendar.save
-      redirect_to @calendar, notice: 'Calendar was saved.'
+      redirect_to user_calendars_path(@calendar), notice: 'Calendar was saved.'
     else
       flash[:error] = @calendar.errors.full_messages
       render :new
@@ -38,9 +38,9 @@ class CalendarsController < ApplicationController
     if @calendar.calendar_admin?(@user)
       @calendar.users << User.find(params[:calendar][:user_ids])
       if @calendar.save
-        redirect_to calendar_path(@calendar), notice: 'Your calendar has been updated.'
+        redirect_to user_calendar_path(@calendar), notice: 'Your calendar has been updated.'
       else
-        redirect_to calendar_path(@calendar)
+        redirect_to user_calendar_path(@calendar)
       end
     end
   end

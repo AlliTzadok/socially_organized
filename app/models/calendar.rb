@@ -37,7 +37,7 @@ class Calendar < ApplicationRecord
   end
 
   #need method to query and verify current user is a user on the calendar
-  def authorized_for_calendar
-
+  def authorized_for_calendar(user)
+    self.users.include?(user)
   end
 end

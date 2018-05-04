@@ -1,36 +1,15 @@
-
+<h3>Do you want to schedule this post?</h3>
 <div class="container">
-  <h3><%= link_to "Edit Post", edit_post_path(@post) %></h3>
   <br>
 <%= form_for @calendar_posts, url: { action: "schedule_post"} do |f| %>
 <%= f.label :calendar, "Your Calendars:"%>
 <%= f.collection_select :calendar_id, @calendars, :id, :name %> <br> <br>
-<%= f.label :date, "Date:"%>
-<%= f.date_select :date %> <br>
-<%= f.label :time, "Time:"%>
-<%= f.time_select :time %>  <br>
+<%= f.label :date, "Select Date"%>
+<%= f.date_select :date, :order => [:month, :day, :year] %> <br>
+<%= f.label :time, "Select Time"%>
+<%= f.time_select :time, :time_separator => "" %>  <br>
 <%= f.hidden_field :post_id %>
 <%= f.submit "Schedule Post", class: "btn btn-sm btn-info"%>
 <% end %>
-</div>
 
-<div class="container">
-<h1>Title:  <%= @post.title %> </h1>
-
-
-<h3>Content:</h3>
-<%= @post.content %> <br> <br>
-
-<h3>Link:</h3>
-<%= @post.link %>  <br> <br>
-<h3>Finalized:</h3>
-<%= human_boolean(@post.finalized) %>  <br> <br>
-
-<h3>Picture:</h3>
-<%= image_tag(@post.picture_url, width: 200) if @post.picture.present? %>  <br> <br>
-
-<h3>Platforms:</h3>
-<% @post.platforms.each do |platform| %>
-<%= platform.name %>
-<% end %>
-</div>
+<%= render 'show' %>

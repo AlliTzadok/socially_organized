@@ -15,18 +15,14 @@ Rails.application.routes.draw do
   post 'posts/:id/schedule_post', to: 'posts#schedule_post', as: 'schedule_post'
 
 
-  resources :calendars
-  resources :posts
-
   resources :calendars, only: [:index, :create, :update] do
     resources :posts
   end
 
-
-
-
   resources :users do
     resources :calendars
   end
+
+  resources :posts
 
 end

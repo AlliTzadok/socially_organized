@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :email, confirmation: {case_sensitive: false}
   validates :password, confirmation: {case_sensitive: true}
-  validates :password, length: { minimum: 2}
+  validates :password, length: { minimum: 6}
   validates :email, :password, :name, presence: true
 
   def self.from_omniauth(auth)
