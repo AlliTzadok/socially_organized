@@ -1,6 +1,7 @@
 <div class="container">
+<%= form_for @post do |f| %>
+
   <div class="form-field">
-    <%= form_for @post do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title, required: true %> <br>
     Title is required.
@@ -45,7 +46,7 @@
   <% end %>
 
 
-  <%= f.submit class: "btn btn-sm btn-info"%>
+  <%= f.submit%>
 
   <% end %>
 </div>
