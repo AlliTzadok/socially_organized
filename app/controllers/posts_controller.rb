@@ -5,12 +5,14 @@ class PostsController < ApplicationController
 
   def index
     @posts = current_user.posts
+
     @users = User.all
   end
 
   def show
-    @calendars = current_user.calendars
-    @calendar_posts = CalendarPost.find_or_initialize_by(post: @post)
+    # @calendars = current_user.calendars
+    # @calendar_posts = CalendarPost.find_or_initialize_by(post: @post)
+    # @calendar_post = @post.calendar_posts.build
   end
 
   def finalized
@@ -47,15 +49,6 @@ class PostsController < ApplicationController
       redirect_to post_path(@post), notice: 'Your post has been updated.'
     else
       redirect_to edit_post_path(@post)
-    end
-  end
-
-  def schedule_post
-    @calendar_post = CalendarPost.new(calendar_post_params)
-    if @calendar_post.save
-      redirect_to post_path(@post)
-    else
-      render 'show'
     end
   end
 

@@ -12,15 +12,16 @@ Rails.application.routes.draw do
   get 'posts/finalized', to: 'posts#finalized', as: 'finalized_posts'
   get 'posts/drafted', to: 'posts#drafted', as: 'drafted_posts'
 
-  post 'posts/:id/schedule_post', to: 'posts#schedule_post', as: 'schedule_post'
-
-
   resources :calendars, only: [:index, :create, :update] do
     resources :posts
   end
 
   resources :users do
     resources :calendars
+  end
+
+  resources :posts do
+    resources :calendar_posts
   end
 
   resources :posts

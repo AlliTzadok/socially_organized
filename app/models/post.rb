@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   has_many :platform_posts
   has_many :platforms, through: :platform_posts
   belongs_to :user
+  scope :finalized, -> { where(finalized: true)}
+  scope :drafted, -> { where(finalized: false)}
 
 
   mount_uploader :picture, PictureUploader
@@ -21,5 +23,6 @@ class Post < ApplicationRecord
       self.platforms << platform
     end
   end
+
 
 end

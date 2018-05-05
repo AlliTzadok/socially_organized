@@ -1,0 +1,11 @@
+<%= form_for @calendar_post, url: {controller: "calendar_posts"} do |f| %>
+<%= f.label :calendar, "Your Calendars:"%>
+<%= f.collection_select :calendar_id, @calendars, :id, :name %> <br> <br>
+<%= f.hidden_field :post_id %>
+<%= f.label :date, "Select Date"%>
+<%= f.date_select :date, :order => [:month, :day, :year] %> <br>
+<%= f.label :time, "Select Time"%>
+<%= f.time_select :time, :time_separator => "" %>  <br>
+<%= f.hidden_field :post_id %>
+<%= f.submit "Schedule Post", class: "btn btn-sm btn-info"%>
+<% end %>

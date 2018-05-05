@@ -1,7 +1,7 @@
 <h1>Finalized Posts</h1>
 
 <% @calendars.each do |calendar| %>
-  <% calendar.posts.each do |post| %>
-    <% post.finalized%> <%= link_to post.title.titleize, post_path(post) %>
-    <% end %>
+  <% calendar.posts.finalized.each do |post|  %>
+  <%= link_to post.title, post_path(post) %>
   <% end %>
+<% end %>
