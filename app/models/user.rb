@@ -24,6 +24,14 @@ class User < ApplicationRecord
     end
   end
 
+  def all_posts
+    authored = self.posts
+    calendared = self.calendars.each do |calendr|
+      authored << calendar.posts
+    end
+    return authored.flatten
+  end 
+
   def first_name
     name.split.first
   end

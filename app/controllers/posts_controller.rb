@@ -1,10 +1,10 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :schedule_post, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :set_calendars, only: [:finalized, :drafted]
   before_action :authenticate_user!
 
   def index
-    @posts = current_user.posts
+    @posts = current_user.all_posts
 
     @users = User.all
   end
