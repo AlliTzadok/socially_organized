@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :posts
 
 
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -26,11 +27,13 @@ class User < ApplicationRecord
 
   def all_posts
     authored = self.posts
-    calendared = self.calendars.each do |calendr|
-      authored << calendar.posts
+    calendared = self.calendars.each do |calendar|
+      calendar.posts.each do |post|
+        authored << post
+      end
     end
-    return authored.flatten
-  end 
+    return authored
+  end
 
   def first_name
     name.split.first
