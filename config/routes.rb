@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     resources :calendar_posts
   end
 
+  get 'calendar_posts', to: 'calendar_posts#index', as: 'scheduled_calendar_posts'
+
   resources :posts
 
 end

@@ -12,4 +12,50 @@ current_user.add_user_to_calendar(employee, calendar)
 need a method in user model to add the user who creates a calendar as the admin. something like:
 def add_calendar
 Calendar.new(admin: self)
-end 
+end
+
+broken dashboard -
+<h1><%= current_user.name %>'s Dashboard</h1>
+
+<h3>To-do's for <%=Date.current.strftime("%b %e, %Y")%></h3>
+
+<div class="container">
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Link</th>
+      <th>Finalized</th>
+      <th>Picture</th>
+      <th>Creator</th>
+      <th>Platforms</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+
+<tbody>
+  <% current_user.all_posts.each do |all_posts| %>
+    <% all_posts.calendar_posts.post_today.each do |post| %>
+      <tr>
+        <td><%= link_to post.title.titleize, post_path(post) %></td>
+        <td><%= post.content %></td>
+        <td><%= post.link %></td>
+        <td><%= human_boolean(post.finalized) %></td>
+        <td><%= image_tag(post.picture_url, width: 200) if post.picture.present? %> </td>
+        <td><%= post.user.name %></td>
+        <td>
+        <% post.platforms.each do |platform| %>
+        <%= platform.name.titleize %> <br>
+        <% end %></td>
+      </tr>
+      <% end %>
+      <% end %>
+  </tbody>
+</table>
+
+<br>
+
+</div>

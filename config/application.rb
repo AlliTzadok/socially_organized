@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module SociallyOrganized
   class Application < Rails::Application
-    
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
@@ -17,5 +17,7 @@ module SociallyOrganized
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    #use for adding user specific time zone on next project
+    # config.time_zone = 'Central Time (US & Canada)'
   end
 end

@@ -1,11 +1,11 @@
 class CalendarPostsController < ApplicationController
   before_action :set_calendar_post, only: [:show, :edit, :update, :destroy]
-  before_action :set_calendars, only: [:index, :show, :new, :edit]
+  before_action :set_calendars, only: [:index, :show, :new, :edit, :create]
   before_action :authenticate_user!
 
   def index
     @calendars = current_user.calendars
-    @posts = current_user.all_posts
+    # @posts = current_user.all_posts
   end
 
   def show
@@ -29,9 +29,8 @@ class CalendarPostsController < ApplicationController
     @calendar_post = @post.calendar_posts.build(calendar_post_params)
     if @calendar_post.save
       redirect_to post_calendar_posts_path, notice: 'Your post has been scheduled.'
-      binding.pry
     else
-      redirect_to edit_post_calendar_posts_path(@calendar_post, @post)
+      render 'new', notice: "Something went wrong, or you already have scheduled this post on the calendar."
     end
   end
 
@@ -54,7 +53,7 @@ class CalendarPostsController < ApplicationController
   private
 
   def calendar_post_params
-    params.require(:calendar_post).permit(:post_id, :calendar_id, :date, :time)
+    params.require(:calendar_post).permit(:calendar_id, :date, :time)
   end
 
   def set_calendar_post
