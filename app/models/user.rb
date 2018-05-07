@@ -35,6 +35,7 @@ class User < ApplicationRecord
     return authored
   end
 
+
   def first_name
     name.split.first
   end

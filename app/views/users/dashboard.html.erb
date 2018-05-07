@@ -28,7 +28,7 @@
         <td><%= post.link %></td>
         <td><%= human_boolean(post.finalized) %></td>
         <td><%= image_tag(post.picture_url, width: 200) if post.picture.present? %> </td>
-        <td><%= post.user_id %></td>
+        <td><%= post.user %></td>
         <td>
         <% post.platforms.each do |platform| %>
         <%= platform.name.titleize %> <br>
