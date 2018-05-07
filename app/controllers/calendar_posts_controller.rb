@@ -1,5 +1,5 @@
 class CalendarPostsController < ApplicationController
-  before_action :set_calendar_post, only: [:index, :show, :edit, :update, :destroy]
+  before_action :set_calendar_post, only: [:show, :edit, :update, :destroy]
   before_action :set_calendars, only: [:index, :show, :new, :edit]
   before_action :authenticate_user!
 
@@ -26,17 +26,17 @@ class CalendarPostsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    binding.pry
     @calendar_post = @post.calendar_posts.build(calendar_post_params)
     if @calendar_post.save
-      binding.pry
       redirect_to post_calendar_posts_path, notice: 'Your post has been scheduled.'
+      binding.pry
     else
-      redirect_to edit_post_calendar_post_path(@calendar_post)
+      redirect_to edit_post_calendar_posts_path(@calendar_post, @post)
     end
   end
 
   def update
+    @post = Post.find(params[:post_id])
     @calendar_post.update(calendar_post_params)
     if @calendar_post.save
       redirect_to post_calendar_posts_path, notice: 'Your scheduled post has been updated.'

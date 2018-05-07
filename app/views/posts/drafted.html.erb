@@ -1,6 +1,6 @@
 <h1>Drafted Posts </h1>
 <% @calendars.each do |calendar| %>
   <% calendar.posts.drafted.each do |post| %>
-  <%= link_to post.title.titleize, post_path(post) %>
+  <%= render partial: 'link_to_post_title', local: {post: @post}%>
     <% end %>
   <% end %>

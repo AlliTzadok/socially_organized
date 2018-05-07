@@ -11,17 +11,17 @@ class Post < ApplicationRecord
   mount_uploader :picture, PictureUploader
   validates :title, presence: true
 
-  def platform_attributes=(platform_posts_attributes)
-    if platform_posts_attributes['platform_ids']
-      platform_posts_attributes.platform_ids.each do |id|
-        platform = Platform.find(id: id)
-        self.platforms << platform
-      end
-    end
-    if platform_posts_attributes['name'] != ""
-      platform = Platform.find_or_create_by(name: platform_posts_attributes['name'])
-      self.platforms << platform
-    end
+  def platform_posts_attributes=(platform_posts_attributes)
+    # if platform_posts_attributes['platform_ids']
+    #   platform_posts_attributes.platform_ids.each do |id|
+    #     platform = Platform.find(id: id)
+    #     self.platforms << platform
+    #   end
+    # end
+    # if platform_posts_attributes['name'] != ""
+    #   platform = Platform.find_or_create_by(name: platform_posts_attributes['name'])
+    #   self.platforms << platform
+    # end
   end
 
 

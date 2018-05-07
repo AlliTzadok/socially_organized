@@ -1,0 +1,7 @@
+<h1>Scheduled Posts</h1>
+
+<% current_user.calendars.each do |calendar| %>
+  <% calendar.calendar_posts.each do |calendar_post| %>
+    <%= calendar_post.post.title %>
+      <% end %>
+    <% end %>

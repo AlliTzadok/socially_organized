@@ -44,6 +44,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    binding.pry
     @post.update(post_params)
     if @post.save
       redirect_to post_path(@post), notice: 'Your post has been updated.'
@@ -68,7 +69,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :link, :finalized, :picture, :user_id,  :platform_attributes => [:platform_ids, :name])
+    params.require(:post).permit(:title, :content, :link, :finalized, :picture, :user_id, :platform_ids => [], :platform_posts_attributes => [:name])
   end
 
   def calendar_post_params
