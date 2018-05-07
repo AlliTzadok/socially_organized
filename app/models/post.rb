@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   mount_uploader :picture, PictureUploader
   validates :title, presence: true
 
-  def platform_posts_attributes=(platform_posts_attributes)
+  def platform_attributes=(platform_posts_attributes)
     if platform_posts_attributes['platform_ids']
       platform_posts_attributes.platform_ids.each do |id|
         platform = Platform.find(id: id)

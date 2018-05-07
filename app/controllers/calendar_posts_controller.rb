@@ -26,9 +26,11 @@ class CalendarPostsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
+    binding.pry
     @calendar_post = @post.calendar_posts.build(calendar_post_params)
     if @calendar_post.save
-      redirect_to post_calendar_post_path(@calendar_post), notice: 'Your post has been scheduled.'
+      binding.pry
+      redirect_to post_calendar_posts_path, notice: 'Your post has been scheduled.'
     else
       redirect_to edit_post_calendar_post_path(@calendar_post)
     end
@@ -37,7 +39,7 @@ class CalendarPostsController < ApplicationController
   def update
     @calendar_post.update(calendar_post_params)
     if @calendar_post.save
-      redirect_to post_calendar_post_path(@calendar_post), notice: 'Your scheduled post has been updated.'
+      redirect_to post_calendar_posts_path, notice: 'Your scheduled post has been updated.'
     else
       redirect_to edit_post_calendar_post_path(@calendar_post)
     end

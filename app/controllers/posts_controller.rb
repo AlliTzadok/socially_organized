@@ -68,7 +68,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :link, :finalized, :picture, :user_id, :platform_ids => [], :platform_attributes => [:name])
+    params.require(:post).permit(:title, :content, :link, :finalized, :picture, :user_id,  :platform_attributes => [:platform_ids, :name])
   end
 
   def calendar_post_params

@@ -31,14 +31,14 @@
   </div>
 
   <%= f.hidden_field :user_id %> <br>
-  <div class="file-field">
-    <%= f.label :platform, "Social Platforms"%>
-    <%= f.collection_check_boxes :platform_ids, Platform.all, :id, :name, :multiple => true %> <br> <br>
-  </div>
+
 
   <div class="form-field">
-    <%= f.fields_for :platform_posts, @platform_post do |platform_post| %>
-
+    <%= f.fields_for :platform_attributes, @platform_post do |platform_post| %>
+    <div class="file-field">
+      <%= platform_post.label :platform, "Social Platforms"%>
+      <%= platform_post.collection_check_boxes :platform_ids, Platform.all, :id, :name, :multiple => true %> <br> <br>
+    </div>
     <h4> Or Create a new platform: </h4>
     <%= platform_post.label :platform, 'New Platform'%>
     <%= platform_post.text_field :name%> <br> <br>

@@ -23,12 +23,12 @@
     <tbody>
 
         <tr>
-          <td><%= @post.title.titleize %></td>
+          <td><%= link_to @post.title.titleize, post_path(@post) %></td>
           <td><%= @post.content %></td>
           <td><%= @post.link %></td>
           <td><%= human_boolean(@post.finalized) %></td>
           <td><%= image_tag(@post.picture_url, width: 200) if @post.picture.present? %> </td>
-          <td><%= @post.user %></td>
+          <td><%= @post.user.name %></td>
           <td>
           <% @post.platforms.each do |platform| %>
           <%= platform.name.titleize %> <br>
