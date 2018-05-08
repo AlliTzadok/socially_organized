@@ -23,7 +23,7 @@
     <tbody>
 
         <tr>
-          <td>@post.title.titleize %></td>
+          <td><%=@post.title.titleize %></td>
           <td><%= @post.content %></td>
           <td><%= @post.link %></td>
           <td><%= human_boolean(@post.finalized) %></td>

@@ -38,7 +38,7 @@
   </div>
 
   <div class="form-field">
-    <%= f.fields_for :platform_attributes, @platform_post do |platform_post| %>
+    <%= f.fields_for :platform_posts_attributes, @platform_post do |platform_post| %>
 
     <h4> Or Create a new platform: </h4>
     <%= platform_post.label :platform, 'New Platform'%>
