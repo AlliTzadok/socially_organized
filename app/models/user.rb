@@ -6,7 +6,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
+  :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i[facebook]
 
   validates :email, uniqueness: true
   validates :email, confirmation: {case_sensitive: false}
@@ -31,6 +31,14 @@ class User < ApplicationRecord
       end
     end
     authored
+  end
+
+  #need method to find all calendar posts for today.
+  #does it need to be calendar.posts.where(date: Date.current)? or some other way
+  def todays_calendar
+    self.calendars.each do |calendar|
+      calendar.posts.where(date: Date.current)
+    end
   end
 
 

@@ -44,9 +44,13 @@ gem 'jquery-rails'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
+
 gem 'hpricot'
 gem 'ruby_parser'
+#User Authentication with Facebook
 gem 'omniauth-facebook'
+#Development ENV Variables
+gem 'figaro'
 gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do

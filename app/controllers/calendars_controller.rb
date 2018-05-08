@@ -46,8 +46,12 @@ class CalendarsController < ApplicationController
   end
 
   def destroy
-    @calendar.destroy
-    redirect_to root_path, notice: 'Your calendar has been deleted.'
+    @user = current_user
+    if @calendar.calendar_admin?(@user)
+      @calendar.destroy
+      redirect_to root_path, notice: 'Your calendar has been deleted.'
+    else
+      redirect_to user_calendar_path(@calendar), notice: 'You do not have authorization to delete this calendar'
   end
 
   private

@@ -42,11 +42,13 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.update(post_params)
-    if @post.save
-      redirect_to post_path(@post), notice: 'Your post has been updated.'
-    else
-      redirect_to edit_post_path(@post)
+    if @post.user == current_user
+      @post.update(post_params)
+      if @post.save
+        redirect_to post_path(@post), notice: 'Your post has been updated.'
+      else
+        redirect_to edit_post_path(@post)
+      end 
     end
   end
 

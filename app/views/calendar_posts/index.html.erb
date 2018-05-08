@@ -20,7 +20,7 @@
   <tbody>
     <% calendar.calendar_posts.each do |calendar_post| %>
     <tr>
-      <td><%= calendar_post.post.title.titleize %> </td>
+      <td><%= calendar_post.post.title.titlecase %> </td>
       <td>  <%= calendar_post.date%> </td>
       <td><%= calendar_post.time %></td>
       <td>  <%= calendar_post.post.content %> </td>
