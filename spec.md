@@ -28,7 +28,7 @@ Specs:
       - User => Validates password, case_sensitive true
       - User => validates password length
       - User => Validates presence of email, password and name
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+- [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
 - [x] Include signup - Devise
 - [x] Include login - Devise
 - [x] Include logout - Devise
@@ -37,11 +37,11 @@ Specs:
         - Users/1/Calendars/1
 
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
-        - Users/1/Calendars 
+        - Users/1/Calendars
 - [ ] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [x] The application is pretty DRY
+- [x] Limited logic in controllers
+- [x] Views use helper methods if appropriate
+- [x] Views use partials if appropriate

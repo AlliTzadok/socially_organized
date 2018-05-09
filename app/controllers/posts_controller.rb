@@ -35,9 +35,9 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to post_path(@post)
+      redirect_to post_path(@post), notice: "You have successfully created your post planner."
     else
-      redirect_to new_post_path
+      redirect_to new_post_path, notice: "Something went wrong when trying to save. Try again."
     end
   end
 
