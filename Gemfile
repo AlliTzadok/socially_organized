@@ -7,6 +7,9 @@ ruby '2.3.1'
 gem 'rails', '~> 5.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+
+#Used to move a https url
+gem 'thin'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 
@@ -49,6 +52,8 @@ gem 'hpricot'
 gem 'ruby_parser'
 #User Authentication with Facebook
 gem 'omniauth-facebook'
+#user Authentication with Google
+gem 'omniauth-google-oauth2', '~> 0.4.1'
 #Development ENV Variables
 gem 'figaro'
 gem 'dotenv-rails', groups: [:development, :test]
