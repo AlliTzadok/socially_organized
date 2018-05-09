@@ -46,7 +46,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'hpricot'
 gem 'ruby_parser'
-gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'dotenv-rails', groups: [:development, :test]
 
