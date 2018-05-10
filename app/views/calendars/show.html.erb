@@ -2,6 +2,8 @@
 
 
 <% if @calendar.calendar_admin?(@user) %>
+<h3>Do you want to delete this calendar?</h3>
+<%= link_to 'Destroy', calendar_path(@calendar), method: :delete, data: { confirm: 'Are you sure?' } %>
 <h3>Add a user to this calendar?</h3>
 <%= form_for @calendar do |f| %>
 <%= f.collection_select(:user_ids, @users, :id, :name) %>
