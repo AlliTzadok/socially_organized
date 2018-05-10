@@ -1,6 +1,5 @@
 <h1>Drafted Posts </h1>
 <% @calendars.each do |calendar| %>
-  <%= calendar.name %>
   <% calendar.posts.drafted.each do |post| %>
     <%= link_to post.title, post_path(post) %>
     <% end %>
