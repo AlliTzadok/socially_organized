@@ -34,24 +34,28 @@ class CalendarsController < ApplicationController
   end
 
   def update
-    @user = current_user
-    if @calendar.calendar_admin?(@user)
-      @calendar.users << User.find(params[:calendar][:user_ids])
-      if @calendar.save
-        redirect_to user_calendar_path(@calendar), notice: 'Your calendar has been updated.'
+    if @calendar.calendar_admin?(current_user)
+      @new_user = User.find(params[:calendar][:user_ids])
+      if @calendar.users.includes(@new_user)
+        redirect_to user_calendar_path(@calendar), notice: 'This user has already been added to this calendar.'
       else
-        redirect_to user_calendar_path(@calendar)
+        @calendar.users << @new_user
+        if @calendar.save
+          redirect_to user_calendar_path(@calendar), notice: 'Your calendar has been updated.'
+        else
+          redirect_to user_calendar_path(@calendar)
+        end
       end
     end
   end
 
   def destroy
     if @calendar.calendar_admin?(current_user)
-      if @calendar.users.count == 1 && @calendar.posts.count == 0
+      if @calendar.posts.count == 0
         @calendar.destroy
-        redirect_to user_calendars_path, notice: 'Your calendar has been deleted.'
+        redirect_to root_path, notice: 'Your calendar has been deleted.'
       else
-        redirect_to user_calendar_path(@calendar), notice: "There are other contributors on this calendar and/or post others are relying on. This calendar cannot be deleted."
+        redirect_to user_calendar_path(@calendar), notice: "There are other contributors on this calendar that are relying on the scheduled posts. Remove all posts to delete this calendar."
       end
     else
       redirect_to user_calendar_path(@calendar), notice: "You are not authorized to delete this calendar."
