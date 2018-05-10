@@ -1,3 +1,25 @@
 <h1><%= current_user.name %>'s Dashboard</h1>
 
-<h3>Today is <%=Date.current.strftime("%b %e, %Y")%></h3>
+<h4>Today is <%=Date.current.strftime("%b %e, %Y")%></h3>
+
+<p>What would you like to do?</p>
+
+<div class="dashboard">
+  <%= link_to "View Calendars", user_calendars_path(current_user) %>
+</div>
+
+<div class="dashboard">
+  <%= link_to "Create a New Calendar", new_user_calendar_path(current_user) %>
+</div>
+
+<div class="dashboard">
+  <%= link_to "View All Posts", posts_path %>
+</div>
+
+<div class="dashboard">
+  <%= link_to "Create a New Post", new_post_path %>
+</div>
+
+<div class="dashboard">
+  <%= link_to "View All Scheduled Posts", scheduled_calendar_posts_path %>
+</div>
