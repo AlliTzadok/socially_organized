@@ -5,7 +5,6 @@ class CalendarPostsController < ApplicationController
 
   def index
     @calendars = current_user.calendars
-    # @posts = current_user.all_posts
   end
 
   def show

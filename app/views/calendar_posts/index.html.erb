@@ -25,7 +25,7 @@
       <td><%= calendar_post.time %></td>
       <td>  <%= calendar_post.post.content %> </td>
       <td>  <%= calendar_post.post.link %> </td>
-      <td>  <%= image_tag(calendar_post.post.picture_url, width: 200) if calendar_post.post.picture.present? %> </td>
+      <td>  <%= image_tag(calendar_post.post.picture_url, width: 100) if calendar_post.post.picture.present? %> </td>
       <td>
         <% calendar_post.post.platforms.each do |platform| %>
         <%= platform.name.titleize %> <br>

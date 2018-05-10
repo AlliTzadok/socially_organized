@@ -2,7 +2,7 @@ class Calendar < ApplicationRecord
 
   has_many :user_calendars
   has_many :users, :through => :user_calendars
-  has_many :calendar_posts
+  has_many :calendar_posts, dependent: :destroy
   has_many :posts, :through => :calendar_posts
   belongs_to :admin, :class_name => :User, :foreign_key => :admin_id
 
