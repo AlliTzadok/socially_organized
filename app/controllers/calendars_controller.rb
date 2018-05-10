@@ -36,7 +36,7 @@ class CalendarsController < ApplicationController
   def update
     if @calendar.calendar_admin?(current_user)
       @new_user = User.find(params[:calendar][:user_ids])
-      if @calendar.users.includes(@new_user)
+      if @calendar.users.include?(@new_user)
         redirect_to user_calendar_path(@calendar), notice: 'This user has already been added to this calendar.'
       else
         @calendar.users << @new_user
