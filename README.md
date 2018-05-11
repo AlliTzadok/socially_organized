@@ -1,24 +1,22 @@
-# README
+# Socially Organized
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Rails app for planning out your social media editorial calendars.
 
-Things you may want to cover:
+## Features
+* Create calendars and add team members to calendars to collaborate on social media or marketing plans together
+* Plan out posts for social media platforms and let them float as just an individual post, or schedule on a specific calendar
+* Keep track of all posts and whether they are finalized and ready to be posted or if they are rough drafts
 
-* Ruby version
+## Ruby Version 2.3.1
 
-* System dependencies
+## Installation
+* Fork and clone Repo
+* cd socially_organized
+* bundle install
+* You may have to migrate the database by rake db:migrate
 
-* Configuration
+## Contributors Guide
+* File an issue with a pull request
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Licensing
+* This project has been licensed under the MIT open source license.
