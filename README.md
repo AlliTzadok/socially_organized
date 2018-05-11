@@ -20,3 +20,5 @@ A Rails app for planning out your social media editorial calendars.
 
 ## Licensing
 * This project has been licensed under the MIT open source license.
+
+https://github.com/AlliTzadok/socially_organized/blob/master/LICENSE
