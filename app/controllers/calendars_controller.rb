@@ -5,6 +5,7 @@ class CalendarsController < ApplicationController
   def index
     @user = current_user
     @calendars = current_user.calendars
+
   end
 
   def show
@@ -28,8 +29,7 @@ class CalendarsController < ApplicationController
       @calendar.save
       redirect_to user_calendars_path(@calendar), notice: 'Calendar was saved.'
     else
-      flash[:error] = @calendar.errors.full_messages
-      render :new
+      redirect_to new_calendar_path, notice: 'Your calendar did not save. Please try again.'
     end
   end
 
