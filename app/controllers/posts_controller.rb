@@ -7,7 +7,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = current_user.all_posts
-
   end
 
   def show
@@ -19,6 +18,11 @@ class PostsController < ApplicationController
   end
 
   def drafted
+
+  end
+
+  def post_today
+
 
   end
 
@@ -41,7 +45,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.user_id == current_user
+    if @post.user_id == current_user.id
       @post.update(post_params)
       if @post.save
         redirect_to post_path(@post), notice: 'Your post has been updated.'
@@ -54,7 +58,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    if @post.user_id == current_user
+    if @post.user_id == current_user.id
       @post.destroy
       redirect_to posts_path, notice: 'Your post has been deleted.'
     else
