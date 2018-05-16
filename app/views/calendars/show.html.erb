@@ -30,20 +30,15 @@
 
 <% end %>
 
-<h3>Calendar Posts</h3>
-<table>
-  <tr>
-    <th>Rough Drafts</th>
-    <th>Finalized Posts </th>
-  </tr>
+<h2>Calendar Posts</h2>
 
-  <tr>
+
+
+<h3>Rough Drafts</h3>
     <% @calendar.rough_draft_posts.each do |post| %>
-    <td><%= link_to post.title.titleize, post_path(post) %></td>
+    <li><%= link_to post.title.titleize, post_path(post) %></li>
     <% end %>
+<h3>Finalized Posts</h3>
     <% @calendar.finalized_posts.each do |post| %>
-    <td><%= link_to post.title.titleize, post_path(post) %></td>
+    <li><%= link_to post.title.titleize, post_path(post) %> </li>
     <% end %>
-  </tr>
-
-</table>
