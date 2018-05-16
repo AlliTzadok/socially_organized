@@ -36,22 +36,30 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post), notice: "You have successfully created your post planner."
     else
-      redirect_to new_post_path, notice: "Something went wrong when trying to save. Try again."
+      redirect_to new_post_path, alert: "Something went wrong when trying to save. Try again."
     end
   end
 
   def update
-    @post.update(post_params)
-    if @post.save
-      redirect_to post_path(@post), notice: 'Your post has been updated.'
+    if @post.user_id == current_user
+      @post.update(post_params)
+      if @post.save
+        redirect_to post_path(@post), notice: 'Your post has been updated.'
+      else
+        redirect_to edit_post_path(@post)
+      end
     else
-      redirect_to edit_post_path(@post)
+      redirect_to post_path(@post), alert: 'You are not authorized to edit this post.'
     end
   end
 
   def destroy
-    @post.destroy
-    redirect_to posts_path, notice: 'Your post has been deleted.'
+    if @post.user_id == current_user
+      @post.destroy
+      redirect_to posts_path, notice: 'Your post has been deleted.'
+    else
+      redirect_to posts_path, alert: 'You are not authorized to delete this post. Please consult the post admin.'
+    end
   end
 
   private

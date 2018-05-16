@@ -55,7 +55,7 @@ class CalendarsController < ApplicationController
         @calendar.destroy
         redirect_to root_path, notice: 'Your calendar has been deleted.'
       else
-        redirect_to user_calendar_path(@calendar), notice: "There are other contributors on this calendar that are relying on the scheduled posts. Remove all posts to delete this calendar."
+        redirect_to user_calendar_path(@calendar), else: "There are other contributors on this calendar that are relying on the scheduled posts. Remove all posts to delete this calendar."
       end
     else
       redirect_to user_calendar_path(@calendar), notice: "You are not authorized to delete this calendar."
