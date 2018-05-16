@@ -8,8 +8,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = current_user.all_posts
-
-    @users = User.all
   end
 
   def show

@@ -1,5 +1,4 @@
 class Calendar < ApplicationRecord
-
   has_many :user_calendars
   has_many :users, :through => :user_calendars
   has_many :calendar_posts, dependent: :destroy
@@ -36,8 +35,4 @@ class Calendar < ApplicationRecord
     end
   end
 
-  #need method to query and verify current user is a user on the calendar
-  def authorized_for_calendar(user)
-    self.users.include?(user)
-  end
 end
