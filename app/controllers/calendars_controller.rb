@@ -29,7 +29,7 @@ class CalendarsController < ApplicationController
       @calendar.save
       redirect_to user_calendars_path(@calendar), notice: 'Calendar was saved.'
     else
-      redirect_to new_calendar_path, notice: 'Your calendar did not save. Please try again.'
+      redirect_to new_calendar_path, alert: 'Your calendar did not save. Please try again.'
     end
   end
 
@@ -37,13 +37,13 @@ class CalendarsController < ApplicationController
     if @calendar.calendar_admin?(current_user)
       @new_user = User.find(params[:calendar][:user_ids])
       if @calendar.users.include?(@new_user)
-        redirect_to user_calendar_path(@calendar), notice: 'This user has already been added to this calendar.'
+        redirect_to user_calendar_path(@calendar), alert: 'This user has already been added to this calendar.'
       else
         @calendar.users << @new_user
         if @calendar.save
           redirect_to user_calendar_path(@calendar), notice: 'Your calendar has been updated.'
         else
-          redirect_to user_calendar_path(@calendar)
+          redirect_to user_calendar_path(@calendar), alert: 'Something went wrong, please try again.'
         end
       end
     end

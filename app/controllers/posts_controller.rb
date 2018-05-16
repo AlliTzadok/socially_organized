@@ -2,12 +2,12 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :set_calendars, only: [:finalized, :drafted]
   before_action :set_platforms, only: [:new, :edit]
-  before_action :authorize_user
   before_action :authenticate_user!
 
 
   def index
     @posts = current_user.all_posts
+
   end
 
   def show
@@ -65,12 +65,6 @@ class PostsController < ApplicationController
 
   def set_platforms
     @platforms = Platform.all
-  end
-
-  def authorize_user
-    current_user.calendars.each do |calendar|
-      calendar.posts.includes(@post)
-    end
   end
 
   def post_params
