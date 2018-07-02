@@ -1,0 +1,21 @@
+Functionality:
+
+User Dashboard ->
+- Currently shows:
+  1.  Links to calendars index, create forms views for calendars and posts, and scheduled post index
+  2.  Shows the current day
+
+- To do:
+  1.  Turn links into buttons
+  2.  Buttons function with JSON to load calendars, create forms, posts and scheduled posts on dashboard screen.
+  3. Maybe add a view of all the posts that should be published that day?
+
+Calendars Page ->
+- Currently shows:
+  1. links to each calendar for the particular user.
+  2. Button to create a new calendar that redirects to the new calendar form page.
+
+- To do:
+  1. Turn links into Buttons
+  2. Create functionality to load each calendar in the calendars index page.
+  3. Load the create calendar form below the button instead of redirecting to other page.
