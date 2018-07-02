@@ -19,3 +19,8 @@ Calendars Page ->
   1. Turn links into Buttons
   2. Create functionality to load each calendar in the calendars index page.
   3. Load the create calendar form below the button instead of redirecting to other page.
+
+Remove ->
+  1. In top menu bar:
+    a. New Calendar link
+    b. New post link
