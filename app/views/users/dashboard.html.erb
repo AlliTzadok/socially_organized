@@ -4,22 +4,14 @@
 
 <p>What would you like to do?</p>
 
-<div class="dashboard">
-  <%= link_to "View Calendars", user_calendars_path(current_user) %>
-</div>
+<div class="col-xs-12 col-sm-4 emphasis">
+  <%= button_to "View Calendars", user_calendars_path(current_user), class: 'btn btn-primary btn-block', id: 'user-calendars-button', method: 'get' %>
 
-<div class="dashboard">
-  <%= link_to "Create a New Calendar", new_user_calendar_path(current_user) %>
-</div>
+  <%= button_to "Create a New Calendar", new_user_calendar_path(current_user), class: 'btn btn-primary btn-block', id: 'new-calendar-button', method: 'get' %>
 
-<div class="dashboard">
-  <%= link_to "View All Posts", posts_path %>
-</div>
+  <%= button_to "View All Posts", posts_path, class: 'btn btn-primary btn-block', id: 'new-calendar-button', method: 'get' %>
 
-<div class="dashboard">
-  <%= link_to "Create a New Post", new_post_path %>
-</div>
+  <%= button_to "Create a New Post", new_post_path, class: 'btn btn-primary btn-block', id: 'new-post-button', method: 'get'%>
 
-<div class="dashboard">
-  <%= link_to "View All Scheduled Posts", scheduled_calendar_posts_path %>
+    <%= button_to "View All Scheduled Posts", scheduled_calendar_posts_path, class: 'btn btn-primary btn-block', id: 'posts-button', method: 'get' %>
 </div>
