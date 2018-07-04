@@ -7,7 +7,7 @@ class CalendarsController < ApplicationController
     @calendars = current_user.calendars
     respond_to do |format|
       format.html { render :index}
-      format.json { render json: @calendars, status: 200}
+      format.json { render json: {calendars: @calendars, user: @user}, status: 200}
     end
   end
 
