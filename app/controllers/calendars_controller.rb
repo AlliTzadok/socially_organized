@@ -5,7 +5,10 @@ class CalendarsController < ApplicationController
   def index
     @user = current_user
     @calendars = current_user.calendars
-
+    respond_to do |format|
+      format.html { render :index}
+      format.json { render json: @calendars, status: 200}
+    end
   end
 
   def show

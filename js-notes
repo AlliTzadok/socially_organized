@@ -8,7 +8,7 @@ User Dashboard ->
 - To do:
   1.  Turn links into buttons
   2.  Buttons function with JSON to load calendars, create forms, posts and scheduled posts on dashboard screen.
-  3. Maybe add a view of all the posts that should be published that day?
+  3. Maybe add a view (of all the posts that should be published that day?
 
 Calendars Page ->
 - Currently shows:

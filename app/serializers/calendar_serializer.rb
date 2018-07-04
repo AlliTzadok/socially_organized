@@ -1,3 +1,3 @@
 class CalendarSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :admin_id
 end
