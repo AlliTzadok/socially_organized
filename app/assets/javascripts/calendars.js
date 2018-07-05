@@ -6,8 +6,6 @@ class Calendar {
   }
 }
 
-
-
 function calendarsIndex(event){
   event.preventDefault()
   // event.stopPropagation()
@@ -31,27 +29,6 @@ function calendarsIndex(event){
       })
     })
   }
-
-function postsIndex(event){
-    event.preventDefault()
-    var url = "http://localhost:3000/";
-    $("#dashboard-view").empty();
-    $.get(url+"posts.json", function(response){
-      var user = response.user;
-      response.posts.forEach(function(post){
-        $("#dashboard-view").append(`
-          <div id="post-${post.id}">
-          <h4>
-          <a href="posts/${post.id}">${post.title}
-          </a>
-          </h4>
-          </div>
-          `)
-      })
-    })
-  }
-
-
 
   function newCalendar(event){
     event.preventDefault()

@@ -28,3 +28,7 @@
    border-bottom: 1px solid #DDD;
    border-spacing: 10px;
  }
+
+ #dashboard {
+   padding: 10px;
+ }
