@@ -6,7 +6,12 @@ class PostsController < ApplicationController
 
 
   def index
+    @user = current_user
     @posts = current_user.all_posts
+    respond_to do |format|
+      format.html { render :index}
+      format.json { render json: {posts: @posts, user: @user}, status: 200}
+    end
   end
 
   def show

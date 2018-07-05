@@ -19,6 +19,7 @@ class CalendarsController < ApplicationController
 
   def new
     @calendar = current_user.calendars.build
+    render :new, layout: false
   end
 
   def edit
