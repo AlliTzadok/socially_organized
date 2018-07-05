@@ -3,7 +3,9 @@
 Specs:
 - [x] Use jQuery for implementing new requirements
 - [ ] Include a show resource rendered using jQuery and an Active Model Serialization JSON backend.
-- [x] Include an index resource rendered using jQuery and an Active Model Serialization JSON backend.
+
+- [x] Include an index resource rendered using jQuery and an Active Model Serialization JSON backend. -- on the dashboard view for the calendars index links list.
+
 - [x] Include at least one has_many relationship in information rendered via JSON and appended to the DOM.
 - [ ] Use your Rails API and a form to create a resource and render the response without a page refresh.
 - [ ] Translate JSON responses into js model objects.
