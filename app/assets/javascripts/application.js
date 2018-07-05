@@ -16,3 +16,4 @@
 //= require_tree .
 //= require users
 //= require calendars
+//= require posts
