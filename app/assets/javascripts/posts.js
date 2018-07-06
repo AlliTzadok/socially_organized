@@ -18,7 +18,14 @@ function postsIndex(event){
     })
   }
 
-  function newPost(event){
+function postShow(event){
+  event.preventDefault()
+  var url = "http://localhost:3000/";
+  $("#posts").empty();
+
+}
+
+function newPost(event){
     event.preventDefault()
 
     var url = "http://localhost:3000/";

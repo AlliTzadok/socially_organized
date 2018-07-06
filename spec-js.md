@@ -2,13 +2,20 @@
 
 Specs:
 - [x] Use jQuery for implementing new requirements
+  --used jQuery for appending all info to DOM.
 - [ ] Include a show resource rendered using jQuery and an Active Model Serialization JSON backend.
 
 - [x] Include an index resource rendered using jQuery and an Active Model Serialization JSON backend. -- on the dashboard view for the calendars index links list.
 
 - [x] Include at least one has_many relationship in information rendered via JSON and appended to the DOM.
-- [ ] Use your Rails API and a form to create a resource and render the response without a page refresh.
-- [ ] Translate JSON responses into js model objects.
+  -- User has many posts
+  -- User has many calendars
+
+- [x] Use your Rails API and a form to create a resource and render the response without a page refresh.  
+  --Create new resource of Calendar, and load the output of the calendar in the same page.
+
+- [x] Translate JSON responses into js model objects. -- on the dashboard view, create new calendar and turn into jS model object using the class constructor and function.
+
 - [ ] At least one of the js model objects must have at least one method added by your code to the prototype.
 
 Confirm
