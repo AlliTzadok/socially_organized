@@ -15,9 +15,15 @@ class CalendarsController < ApplicationController
     @users = User.all.where.not(id: current_user.id)
     @user = current_user
     @calendars = current_user.calendars
+
+    respond_to do |format|
+      format.html { render 'show'}
+      format.json { render json: {calendars: @calendars, user: @user}, status: 200}
+    end
   end
 
   def new
+    @user = current_user
     @calendar = current_user.calendars.build
     render :new
   end
@@ -31,7 +37,8 @@ class CalendarsController < ApplicationController
     if @calendar.save
       @calendar.users << current_user
       @calendar.save
-      redirect_to user_calendars_path(@calendar), notice: 'Calendar was saved.'
+      # redirect_to user_calendars_path(@calendar), notice: 'Calendar was saved.'
+      render json: {calendar: @calendar, user: @user}, status: 201
     else
       redirect_to new_calendar_path, alert: 'Your calendar did not save. Please try again.'
     end

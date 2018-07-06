@@ -4,6 +4,10 @@ class Calendar {
     this.name = name;
     this.admin_id = admin_id;
   }
+
+  renderName(){
+    return(`<strong> ${this.name}</strong>`)
+  }
 }
 
 function calendarsIndex(event){
@@ -39,5 +43,18 @@ function calendarsIndex(event){
       // debugger
       var user = response.user;
       $("#dashboard-view").html(response)
+    })
+  }
+
+  function createCalendar(event){
+    event.preventDefault()
+    var url = "http://localhost:3000/";
+    $("#dashboard-view").empty();
+    const values = $(this).serialize();
+    const posting = $.post($(this).attr("action"), values);
+    posting.done(function(data){
+      const newCalendar = new Calendar(data.calendar.id, data.calendar.name, data.calendar.admin_id)
+      debugger
+      $('#dashboard-view').append(`Your new calendar: ${newCalendar.renderName()} has been created!`)
     })
   }
