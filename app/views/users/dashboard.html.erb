@@ -2,19 +2,24 @@
 
 <h4>Today is <%=Date.current.strftime("%b %e, %Y")%></h3>
 
-<p>What would you like to do?</p>
+  <p>What would you like to do?</p>
 
-<div class="col-xs-12 col-sm-4 emphasis" id="dashboard">
-  <%= link_to "View Calendars", user_calendars_path(current_user), class: 'btn btn-primary btn-block', id: 'calendars-index-button' %>
+  <div class="container" id="dashboard">
+      <div class="col-xs-auto">
+        <%= link_to "View Calendars", user_calendars_path(current_user), class: 'btn btn-primary custom', id: 'calendars-index-button' %>
+      </div>
 
-  <%= link_to "Create a New Calendar", new_user_calendar_path(current_user), class: 'btn btn-primary btn-block', id: 'new-calendar-button'%>
+      <div class="col-xs-auto">
+        <%= link_to "Create a New Calendar", new_user_calendar_path(current_user), class: 'btn btn-primary custom', id: 'new-calendar-button'%>
+      </div>
 
-  <%= link_to "View All Posts", posts_path, class: 'btn btn-primary btn-block', id: 'post-index-button'%>
+      <div class="col-xs-auto">
+        <%= link_to "View All Posts", posts_path, class: 'btn btn-primary custom', id: 'post-index-button'%>
+      </div>
 
-  <%= link_to "Create a New Post", new_post_path, class: 'btn btn-primary btn-block', id: 'new-post-button'%>
+      <div class="col-xs-auto">
+        <%= link_to "Create a New Post", new_post_path, class: 'btn btn-primary custom', id: 'new-post-button'%>
+      </div>
+  </div>
 
-</div>
-
-<br> <br>
-
-<div id="dashboard-view"></div>
+  <div id="dashboard-view"></div>

@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   def new
     @post = current_user.posts.build
     @platform_post = @post.platform_posts.build
-    render :new, layout: false
+    render :new
   end
 
   def edit
