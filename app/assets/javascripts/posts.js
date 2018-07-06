@@ -18,11 +18,16 @@ function postsIndex(event){
     })
   }
 
+
+//need to work on this function. Error says post is not defined.
 function postShow(event){
   event.preventDefault()
-  var url = "http://localhost:3000/";
+  var url = "http://localhost:3000/posts";
   $("#posts").empty();
-
+  $.get(url+`${post.id}.json`, function(response){
+    var post = response.post;
+    debugger
+  })
 }
 
 function newPost(event){

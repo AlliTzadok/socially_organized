@@ -15,11 +15,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.html { render 'show'}
-      format.json { render json: {post: @post, user: @user}, status: 200}
-
-    end
+    render json: @post
   end
 
   def finalized
