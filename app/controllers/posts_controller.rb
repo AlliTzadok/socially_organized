@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @posts = current_user.all_posts
     respond_to do |format|
       format.html { render :index}
       format.json {render json: @post}

@@ -1,4 +1,9 @@
+JS ISSUES:
+[ ] going to post index page on menu bar, loading an individual show page... does not load show page. Nothing happens. Says 404 not found.
 
+[ ] Creating a new calendar from new calendar button and in menu bar does not load. error says XHR failed loading POST...
+
+///////////////////////////////////
 Add below code to Calendar#Show view
 <%= image_tag post.picture_url, width: '100%' if post.picture.present? %>
 
