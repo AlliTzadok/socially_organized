@@ -13,7 +13,7 @@ class Calendar {
 function calendarsIndex(event){
   event.preventDefault()
   // event.stopPropagation()
-
+      // history.pushState(null, null, "calendars")
   //need GET calendars Index
   //Tell Jquery to load
   var url = "http://localhost:3000/";
@@ -36,7 +36,6 @@ function calendarsIndex(event){
 
   function newCalendar(event){
     event.preventDefault()
-
     var url = "http://localhost:3000/";
     $("#dashboard-view").empty();
     $.get(url+"calendars/new", function(response){

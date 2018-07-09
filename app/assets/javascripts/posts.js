@@ -1,46 +1,76 @@
-function Post(id, title, content, link, user_id, picture) {
-  this.id = id
-  this.title = title
-  this.content = content
-  this.link = link
-  this.user_id = user_id
+function Post(post) {
+  this.id = post.id
+  this.title = post.title
+  this.content = post.content
+  this.link = post.link
+  this.finalized = post.finalized
+  this.user_id = post.user_id
+  this.picture = post.picture
 }
 
-function postsIndex(event){
+Post.prototype.formatIndex = function() {
+  let postHtml = `
+  <div id="post-${this.id}">
+
+  <a href="posts/${this.id}" data-id="${this.id}" class="show_link"> <h4>${this.title}</h4>
+  </a>
+  <p> ${this.content} </p>
+  </h4>
+  </div>
+  `
+  return postHtml
+}
+
+Post.prototype.formatShow = function() {
+  let postHtml = `
+  <div id="post-${this.id}">
+    <h4>${this.title}</h4>
+    <p>${this.content}</p>
+    <p>${this.link}</p>
+    <p>${this.user}</p>
+  </div>
+`
+  return postHtml
+}
+
+$(()=> {
+  bindClickHandlers()
+})
+
+const bindClickHandlers = () => {
+
+  $('#post-index-button').on('click', (event) => {
     event.preventDefault()
-    var url = "http://localhost:3000/";
+    // history.pushState(null, null, "posts")
+    let url = "http://localhost:3000/";
     $("#dashboard-view").empty();
     $.get(url+"posts.json", function(response){
-      var user = response.user;
+      let user = response.user;
       response.posts.forEach(function(post){
-        $("#dashboard-view").append(`
-          <div id="post-${post.id}">
-          <h4>
-          <a href="posts/${post.id}">${post.title}
-          </a>
-          <p> ${post.content} </p>
-          </h4>
-          </div>
-          `)
+        let newPost = new Post(post)
+        let postHtml = newPost.formatIndex()
+        $('#dashboard-view').append(postHtml)
       })
     })
-  }
-
-
-//need to work on this function. Error says post is not defined.
-function postShow(event){
-  event.preventDefault()
-  var url = "http://localhost:3000/posts";
-  $("#posts").empty();
-  $.get(url+`${post.id}.json`, function(response){
-    var post = response.post;
-    debugger
   })
-}
 
-function newPost(event){
+  $(document).on('click', ".show_link", function(event){
     event.preventDefault()
+    let id = $(this).attr('data-id')
+    let url = "http://localhost:3000/posts/";
+    $("#dashboard-view").empty();
+    $.get(url+`${id}.json`, function(response){
+      debugger
+      let newPost = new Post(response)
+      let postHtml = newPost.formatShow()
+      $('#dashboard-view').append(postHtml)
+    })
+  })
 
+  $('#new-post-button').on('click', (event) => {
+
+    event.preventDefault()
+    // history.pushState(null, null, "posts/new")
     var url = "http://localhost:3000/";
     $("#dashboard-view").empty();
     $.get(url+"posts/new", function(response){
@@ -48,4 +78,5 @@ function newPost(event){
       var user = response.user;
       $("#dashboard-view").html(response)
     })
-  }
+  })
+}

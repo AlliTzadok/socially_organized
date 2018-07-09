@@ -15,7 +15,10 @@ class PostsController < ApplicationController
   end
 
   def show
-    render json: @post
+    respond_to do |format|
+      format.html { render :index}
+      format.json {render json: @post}
+    end
   end
 
   def finalized
