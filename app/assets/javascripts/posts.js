@@ -1,3 +1,11 @@
+function Post(id, title, content, link, user_id, picture) {
+  this.id = id
+  this.title = title
+  this.content = content
+  this.link = link
+  this.user_id = user_id
+}
+
 function postsIndex(event){
     event.preventDefault()
     var url = "http://localhost:3000/";
