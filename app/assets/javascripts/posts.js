@@ -24,9 +24,9 @@ Post.prototype.formatIndex = function() {
 Post.prototype.formatShow = function() {
   let postHtml = `
   <div id="post-${this.id}">
-    <h4>${this.title}</h4>
-    <p>${this.content}</p>
-    <p>${this.link}</p>
+    <h4><strong>Title: </strong>${this.title}</h4>
+    <p><strong>Content: </strong>${this.content}</p>
+    <p><strong>Link: </strong>${this.link}</p>
     <p>${this.user}</p>
   </div>
 `
@@ -60,7 +60,6 @@ const bindClickHandlers = () => {
     let url = "http://localhost:3000/posts/";
     $("#dashboard-view").empty();
     $.get(url+`${id}.json`, function(response){
-      debugger
       let newPost = new Post(response)
       let postHtml = newPost.formatShow()
       $('#dashboard-view').append(postHtml)
