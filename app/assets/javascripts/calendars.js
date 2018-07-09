@@ -10,50 +10,54 @@ class Calendar {
   }
 }
 
-function calendarsIndex(event){
-  event.preventDefault()
-  // event.stopPropagation()
-      // history.pushState(null, null, "calendars")
-  //need GET calendars Index
-  //Tell Jquery to load
-  var url = "http://localhost:3000/";
-  $("#dashboard-view").empty();
-  $.get(url+"calendars.json", function(response){
-    //append index to DOM
-    var user = response.user;
-    response.calendars.forEach(function(calendar) {
-      $("#dashboard-view").append(`
-        <div id="calendar-${calendar.id}">
-        <h4>
-        <a href="/users/${user.id}/calendars/${calendar.id}">${calendar.name}
-        </a>
-        </h4>
-        </div>
-        `)
+
+$(()=> {
+  bindCalendarClickHandlers()
+})
+
+const bindCalendarClickHandlers = () => {
+  $("#calendars-index-button").on("click", (event) => {
+    event.preventDefault()
+    var url = "http://localhost:3000/";
+    $("#dashboard-view").empty();
+    $.get(url+"calendars.json", function(response){
+      //append index to DOM
+      var user = response.user;
+      response.calendars.forEach(function(calendar) {
+        $("#dashboard-view").append(`
+          <div id="calendar-${calendar.id}">
+          <h4>
+          <a href="/users/${user.id}/calendars/${calendar.id}">${calendar.name}
+          </a>
+          </h4>
+          </div>
+          `)
+        })
       })
     })
-  }
 
-  function newCalendar(event){
-    event.preventDefault()
-    var url = "http://localhost:3000/";
-    $("#dashboard-view").empty();
-    $.get(url+"calendars/new", function(response){
-      // debugger
-      var user = response.user;
-      $("#dashboard-view").html(response)
+    $("#new-calendar-button").on("click", (event) => {
+      event.preventDefault()
+      var url = "http://localhost:3000/";
+      $("#dashboard-view").empty();
+      $.get(url+"calendars/new", function(response){
+        // debugger
+        var user = response.user;
+        $("#dashboard-view").html(response)
+      })
     })
-  }
 
-  function createCalendar(event){
-    event.preventDefault()
-    var url = "http://localhost:3000/";
-    $("#dashboard-view").empty();
-    const values = $(this).serialize();
-    const posting = $.post($(this).attr("action"), values);
-    posting.done(function(data){
-      const newCalendar = new Calendar(data.calendar.id, data.calendar.name, data.calendar.admin_id)
-      debugger
-      $('#dashboard-view').append(`Your new calendar: ${newCalendar.renderName()} has been created!`)
+    $(".calendarForm").on("submit", (event) => {
+      event.preventDefault()
+      var url = "http://localhost:3000/";
+      $("#dashboard-view").empty();
+      const values = $(this).serialize();
+      const posting = $.post($(this).attr("action"), values);
+      posting.done(function(data){
+        const newCalendar = new Calendar(data.calendar.id, data.calendar.name, data.calendar.admin_id)
+        debugger
+        $('#dashboard-view').append(`Your new calendar: ${newCalendar.renderName()} has been created!`)
+      })
     })
+
   }
