@@ -25,12 +25,13 @@ Post.prototype.formatShow = function() {
   let postHtml = `
   <div id="post-${this.id}">
     <h4><strong>Title: </strong>${this.title}</h4>
+    <p><strong>Author: </strong>${this.user.name}</p>
     <p><strong>Content: </strong>${this.content}</p>
     <p><strong>Link: </strong>${this.link}</p>
-    <p>${this.user.name}</p>
+    <p><strong>Image: </strong><img src="${this.picture.url}" width: 200px ><p>
+
   </div>
 `
-  debugger
   return postHtml
 }
 
@@ -63,6 +64,7 @@ const bindClickHandlers = () => {
     $.get(url+`${id}.json`, function(response){
       let newPost = new Post(response)
       let postHtml = newPost.formatShow()
+      $('#dashboard-view').append('<h3>Post Details</h3>')
       $('#dashboard-view').append(postHtml)
     })
   })
