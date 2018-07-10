@@ -28,7 +28,7 @@ Post.prototype.formatShow = function() {
     <p><strong>Author: </strong>${this.user.name}</p>
     <p><strong>Content: </strong>${this.content}</p>
     <p><strong>Link: </strong>${this.link}</p>
-    <p><strong>Image: </strong><img src="${this.picture.url}" width: 200px ><p>
+    <p><strong>Image: </strong><img src="${this.picture.url}" alt="no image uploaded" width: 200px ><p>
 
   </div>
 `
