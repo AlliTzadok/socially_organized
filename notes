@@ -3,7 +3,7 @@ JS ISSUES:
 
 [ ] Creating a new calendar from new calendar button and in menu bar does not load. error says XHR failed loading POST...
 
-[ ] Calendar show -> Rough Draft post link goes to the all posts page, with a URL that is the specific to the post but shows the posts index page
+[fixed] Calendar show -> Rough Draft post link goes to the all posts page, with a URL that is the specific to the post but shows the posts index page
 
 ///////////////////////////////////
 Add below code to Calendar#Show view

@@ -19,10 +19,10 @@ const bindCalendarClickHandlers = () => {
   $("#calendars-index-button").on("click", (event) => {
     event.preventDefault()
     var url = "http://localhost:3000/";
-    $("#dashboard-view").empty();
     $.get(url+"calendars.json", function(response){
       //append index to DOM
       var user = response.user;
+      $("#dashboard-view").empty();
       response.calendars.forEach(function(calendar) {
         $("#dashboard-view").append(`
           <div id="calendar-${calendar.id}">
@@ -47,15 +47,15 @@ const bindCalendarClickHandlers = () => {
       })
     })
 
-    $(".calendarForm").on("submit", (event) => {
+    $(".calendarForm").on("submit", function(event){
       event.preventDefault()
       var url = "http://localhost:3000/";
       $("#dashboard-view").empty();
       const values = $(this).serialize();
       const posting = $.post($(this).attr("action"), values);
       posting.done(function(data){
-        const newCalendar = new Calendar(data.calendar.id, data.calendar.name, data.calendar.admin_id)
-        debugger
+        const newCalendar = new Calendar(data.id, data.name, data.admin_id)
+        // debugger
         $('#dashboard-view').append(`Your new calendar: ${newCalendar.renderName()} has been created!`)
       })
     })
