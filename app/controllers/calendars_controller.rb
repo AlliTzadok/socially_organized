@@ -38,7 +38,7 @@ class CalendarsController < ApplicationController
       @calendar.users << current_user
       @calendar.save
       # redirect_to user_calendars_path(@calendar), notice: 'Calendar was saved.'
-      render json: {calendar: @calendar, user: @user}, status: 201
+      render json: @calendar
     else
       redirect_to new_calendar_path, alert: 'Your calendar did not save. Please try again.'
     end
