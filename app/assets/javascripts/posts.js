@@ -4,7 +4,7 @@ function Post(post) {
   this.content = post.content
   this.link = post.link
   this.finalized = post.finalized
-  this.user_id = post.user_id
+  this.user = post.user
   this.picture = post.picture
 }
 
@@ -27,9 +27,10 @@ Post.prototype.formatShow = function() {
     <h4><strong>Title: </strong>${this.title}</h4>
     <p><strong>Content: </strong>${this.content}</p>
     <p><strong>Link: </strong>${this.link}</p>
-    <p>${this.user}</p>
+    <p>${this.user.name}</p>
   </div>
 `
+  debugger
   return postHtml
 }
 

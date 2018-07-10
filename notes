@@ -1,7 +1,9 @@
 JS ISSUES:
-[ ] going to post index page on menu bar, loading an individual show page... does not load show page. Nothing happens. Says 404 not found.
+[fixed] going to post index page on menu bar, loading an individual show page... does not load show page. Nothing happens. Says 404 not found.
 
 [ ] Creating a new calendar from new calendar button and in menu bar does not load. error says XHR failed loading POST...
+
+[ ] Calendar show -> Rough Draft post link goes to the all posts page, with a URL that is the specific to the post but shows the posts index page
 
 ///////////////////////////////////
 Add below code to Calendar#Show view
