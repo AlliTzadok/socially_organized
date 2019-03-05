@@ -1,7 +1,17 @@
 <h1>Create a New Calendar</h1>
 
 <%= form_for calendar do |f| %>
-<%= f.label :name, 'Calendar Name' %> <br>
+<div class="card row">
+  <div class="row">
+      <%= f.label :name, 'Calendar Name' %>
+    </div>
+
+<div class="row">
 <%= f.text_field :name %>
-<%= f.submit %>
+</div>
+
+<div class="row buttons">
+<%= f.submit class: "btn btn-primary center"%>
+</div>
 <% end %>
+</div>
