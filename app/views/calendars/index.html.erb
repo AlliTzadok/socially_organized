@@ -1,11 +1,13 @@
-<h1><%= current_user.name %>'s Calendars</h1>
+<h1 class="center"><%= current_user.name %>'s Calendars</h1>
 
-<div class="well">
+<div class="well center">
 
     <% current_user.calendars.each do |calendar| %>
-  <h4>  <%= link_to calendar.name.titleize, user_calendar_path(@user, calendar) %> </h4>
+  <h4> <%= link_to calendar.name.titleize, user_calendar_path(@user, calendar) %> </h4>
 
     <% end %>
+
+
 
 </div>
 

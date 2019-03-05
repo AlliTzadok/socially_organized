@@ -65,7 +65,9 @@
 <div class="form-group row">
   <div class="file-field">
     <h4 class="form-subhead center"><%= f.label :platform, "Social Platforms"%></h4>
+    <div class="center">
     <%= f.collection_check_boxes :platform_ids, Platform.all, :id, :name, :multiple => true%>
+  </div>
 </div>
   </div>
 
