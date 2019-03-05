@@ -4,22 +4,33 @@
 
 <p>What would you like to do?</p>
 
-<div class="dashboard">
-  <%= link_to "View Calendars", user_calendars_path(current_user) %>
-</div>
 
-<div class="dashboard">
-  <%= link_to "Create a New Calendar", new_user_calendar_path(current_user) %>
-</div>
+    <div class="dashboard row">
+      <div class="btn btn-md btn-primary buttons">
+      <%= link_to "View Calendars", user_calendars_path(current_user) %>
+    </div>
+    </div>
 
-<div class="dashboard">
-  <%= link_to "View All Posts", posts_path %>
-</div>
+    <div class="dashboard row">
+            <div class="btn btn-md btn-primary buttons">
+      <%= link_to "Create a New Calendar", new_user_calendar_path(current_user) %>
+    </div>
+    </div>
 
-<div class="dashboard">
+    <div class="dashboard row">
+            <div class="btn btn-md btn-primary buttons">
+      <%= link_to "View All Posts", posts_path %>
+    </div>
+    </div>
+
+    <div class="dashboard row">
+            <div class="btn btn-md btn-primary buttons">
   <%= link_to "Create a New Post", new_post_path %>
 </div>
+</div>
 
-<div class="dashboard">
+    <div class="dashboard row">
+            <div class="btn btn-md btn-primary buttons">
   <%= link_to "View All Scheduled Posts", scheduled_calendar_posts_path %>
+</div>
 </div>

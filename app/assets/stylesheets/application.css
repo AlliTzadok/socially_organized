@@ -28,3 +28,18 @@
    border-bottom: 1px solid #DDD;
    border-spacing: 10px;
  }
+
+ .buttons {
+   margin: 7px;
+
+
+ }
+.buttons a {
+   color: white;
+   text-decoration: none;
+ }
+
+ .buttons a:hover {
+   text-decoration: none;
+   color: black;
+ }
