@@ -1,28 +1,29 @@
 <div class="container">
 <%= form_for post do |f| %>
-
-  <div class="form-field">
+<div class="well post-form">
+<div class="row">
+  <div class="form-field form-group">
     <%= f.label :title %>
-    <%= f.text_field :title, required: true %> <br>
+    <%= f.text_field :title, required: true, class: "form-control"%> <br>
     Title is required.
   </div>
 
-  <div class="form-field">
+  <div class="form-field form-group">
     <%= f.label :content%>
-    <%= f.text_area :content%>
+    <%= f.text_area :content, class: "form-control"%>
   </div>
 
-  <div class="form-field">
+  <div class="form-field form-group">
     <%= f.label :link %>
-    <%= f.text_field :link %>
+    <%= f.text_field :link, class: "form-control" %>
   </div>
 
-  <div class="file-field">
+  <div class="file-field form-group">
     <%= f.label :picture%>
     <%= f.file_field :picture, id: :post_picture%>
   </div>
 
-  <div class="file-field">
+  <div class="file-field form-group">
     <%= f.label :finalized %>
     <%= f.radio_button :finalized, true%>
     <%= f.label :finalized, "Yes" %>
@@ -32,17 +33,18 @@
 
   <%= f.hidden_field :user_id %> <br>
 
-  <div class="file-field">
-    <%= f.label :platform, "Social Platforms"%>
-    <%= f.collection_check_boxes :platform_ids, Platform.all, :id, :name, :multiple => true %> <br> <br>
+  <div class="file-field form-group">
+    <h4 class="form-subhead"><%= f.label :platform, "Social Platforms"%></h4>
+    <%= f.collection_check_boxes :platform_ids, Platform.all, :id, :name, :multiple => true%>
+
   </div>
 
-  <div class="form-field">
+  <div class="form-field form-group">
     <%= f.fields_for :platform_posts_attributes, platform_post do |platform_post| %>
 
     <h4> Or Create a new platform: </h4>
     <%= platform_post.label :platform, 'New Platform'%>
-    <%= platform_post.text_field :name%> <br> <br>
+    <%= platform_post.text_field :name, class: "form-control"%> <br> <br>
   </div>
   <% end %>
 
@@ -50,4 +52,5 @@
   <%= f.submit%>
 
   <% end %>
+</div>
 </div>
