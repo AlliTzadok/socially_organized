@@ -157,6 +157,7 @@ GEM
       oauth2 (~> 1.1)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    pg (0.21.0)
     popper_js (1.12.9)
     pry (0.11.3)
       coderay (~> 1.1.0)
@@ -184,6 +185,11 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (5.2.0)
       actionpack (= 5.2.0)
       activesupport (= 5.2.0)
@@ -270,9 +276,11 @@ DEPENDENCIES
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   omniauth-github
+  pg (~> 0.11)
   pry
   puma (~> 3.11)
   rails (~> 5.2.0)
+  rails_12factor
   ruby_parser
   sass-rails (~> 5.0)
   selenium-webdriver
@@ -285,7 +293,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.3.1p112
+   ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
