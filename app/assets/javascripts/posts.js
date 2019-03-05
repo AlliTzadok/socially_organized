@@ -48,6 +48,17 @@ const bindClickHandlers = () => {
     $("#dashboard-view").empty();
     $.get(url+"posts.json", function(response){
       let user = response.user;
+      // debugger
+      response.posts.sort(function(a, b){
+        // debugger
+        if (a.title > b.title) {
+          return 1;
+        }
+        if (a.title < b.title) {
+          return -1;
+        }
+        return 0;
+      });
       response.posts.forEach(function(post){
         let newPost = new Post(post)
         let postHtml = newPost.formatIndex()
